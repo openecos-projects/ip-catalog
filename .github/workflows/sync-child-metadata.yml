@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: sync-child-metadata
@@ -36,13 +38,41 @@ jobs:
         run: python scripts/generate-index.py
 
       - name: Commit changes
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/ip generated
           if git diff --cached --quiet; then
             echo "No child metadata changes."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m "Sync child IP metadata"
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Build Pages artifact
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          mkdir -p _site/generated
+          mkdir -p _site/i18n
+          cp site/index.html _site/index.html
+          cp site/i18n/value-labels.json _site/i18n/value-labels.json
+          cp generated/index.json _site/generated/index.json
+          cp generated/index.md _site/generated/index.md
+          touch _site/.nojekyll
+
+      - name: Configure Pages
+        if: steps.commit.outputs.changed == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        if: steps.commit.outputs.changed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy Pages
+        if: steps.commit.outputs.changed == 'true'
+        uses: actions/deploy-pages@v4
