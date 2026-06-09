@@ -1,0 +1,90 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.tmp
+*.temp
+*~
+.idea/
+.vscode/
+
+# Logs
+*.log
+logs/
+
+# Python caches and environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Node dependencies and build outputs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+.next/
+.nuxt/
+coverage/
+
+# Generated local caches
+.cache/
+.tmp/
+tmp/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+
+# EDA and simulation temporary outputs
+*.vcd
+*.fst
+*.fsdb
+*.wlf
+*.jou
+*.pb
+*.rpt
+*.dcp
+*.bit
+*.bin
+*.elf
+*.hex
+*.mem
+work/
+sim/
+sim_build/
+obj_dir/
+INCA_libs/
+xcelium.d/
+verilator/
+
+# Large archives and downloaded sources
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+downloads/
+third_party_src/
+
+# Child repository working copies may be staged as templates, but never include nested git metadata.
+child-repos/**/.git/
+
+# Keep repository-owned generated indexes trackable.
+!generated/
+!generated/.gitkeep
+!generated/**/*.json
+!generated/**/*.md

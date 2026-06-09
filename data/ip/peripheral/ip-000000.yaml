@@ -1,0 +1,105 @@
+uid: ip-000000
+repo_name: ip-000000
+slug: uart
+display_name: SYS_UART
+summary: Universal asynchronous receiver-transmitter IP candidate.
+
+category: peripheral
+subcategories:
+  - uart
+  - serial
+ip_family: uart
+implementation_style: unknown
+compatibility: []
+register_model: unknown
+features: []
+integration_profile: []
+resource_profile: unknown
+performance_profile: unknown
+best_for: []
+not_recommended_for: []
+
+links:
+  catalog_repository: https://github.com/openecos-projects/ip-000000
+  homepage: null
+  repository: null
+  documentation: null
+
+upstream:
+  owner: unknown
+  status: unknown
+  default_branch: null
+  latest_release: null
+  latest_commit: null
+  latest_commit_at: null
+
+tracking:
+  current_ref: null
+  current_ref_type: null
+  baseline_ref: null
+  baseline_reviewed_at: null
+  update_policy: manual
+
+versions: []
+
+technical:
+  languages: []
+  interfaces:
+    - UART
+  bus_compatibility: []
+  clock_domains: unknown
+  reset_scheme: unknown
+  parameterizable: unknown
+  parameters: []
+  target_process: process-independent
+  fpga_support: unknown
+  asic_support: unknown
+  toolchains: []
+  dependencies: []
+  deliverables:
+    rtl: unknown
+    testbench: unknown
+    docs: unknown
+    constraints: unknown
+
+quality:
+  maturity: experimental
+  verification:
+    simulation: unknown
+    formal: unknown
+    uvm: unknown
+    fpga: unknown
+    silicon: unknown
+  ci_status: unknown
+  known_users: []
+  silicon_proven: unknown
+  fpga_proven: unknown
+  documentation_quality: unknown
+  integration_difficulty: unknown
+  known_issues: []
+
+legal:
+  license: unknown
+  license_file_present: unknown
+  license_risk: high
+  patent_grant: unknown
+  export_control_note: null
+  commercial_use_allowed: unknown
+  third_party_components: []
+
+internal:
+  status: candidate
+  review_owner: null
+  review_notes: null
+  integration_notes:
+    - Upstream implementation has not been selected yet.
+  local_patches: []
+  used_versions: []
+  used_in_projects: []
+  rejection_reason: null
+  next_action: select-upstream-implementation
+
+metadata:
+  first_seen_at: 2026-06-09
+  last_reviewed_at: 2026-06-09
+  data_quality: draft
