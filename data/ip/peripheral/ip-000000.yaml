@@ -3,11 +3,9 @@ repo_name: ip-000000
 catalog:
   repository: git@github.com:openecos-projects/ip-catalog.git
   path: data/ip/peripheral/ip-000000.yaml
-
 slug: uart
 display_name: SYS_UART
 summary: UART 16550-compatible serial controller with an APB-style wrapper.
-
 category: peripheral
 subcategories:
   - uart
@@ -35,13 +33,11 @@ best_for:
   - FPGA teaching SoC peripheral
 not_recommended_for:
   - designs requiring a pinned upstream release without extra provenance work
-
 links:
   catalog_repository: https://github.com/openecos-projects/ip-000000
   homepage: https://opencores.org/projects/uart16550
   repository: https://github.com/freecores/uart16550
   documentation: https://opencores.org/projects/uart16550
-
 upstream:
   owner: OpenCores / FreeCores
   status: mirrored-with-local-wrapper
@@ -49,16 +45,14 @@ upstream:
   latest_release: null
   latest_commit: null
   latest_commit_at: null
-
 tracking:
   current_ref: local-source-drop
   current_ref_type: mirror
   baseline_ref: unknown
   baseline_reviewed_at: 2026-06-09
   update_policy: manual
-
-versions: [1.0.0]
-
+versions:
+  - 1.0.0
 technical:
   languages:
     - Verilog
@@ -89,7 +83,6 @@ technical:
     testbench: absent
     docs: basic
     constraints: absent
-
 quality:
   maturity: experimental
   verification:
@@ -108,7 +101,6 @@ quality:
     - Upstream commit for the mirrored RTL source drop is not pinned.
     - No local simulation, lint, synthesis, or formal reports are present.
     - APB wrapper comments label uart_rx/uart_tx directions inconsistently with signal names.
-
 legal:
   license: LGPL-2.1-or-later
   license_file_present: true
@@ -121,7 +113,6 @@ legal:
       source: https://opencores.org/projects/uart16550
       license: LGPL-2.1-or-later
       usage: rtl-core
-
 internal:
   status: candidate
   review_owner: null
@@ -135,7 +126,6 @@ internal:
   used_in_projects: []
   rejection_reason: null
   next_action: pin-upstream-baseline-and-run-basic-lint-simulation
-
 metadata:
   first_seen_at: 2026-06-09
   last_reviewed_at: 2026-06-09

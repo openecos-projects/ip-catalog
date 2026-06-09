@@ -47,7 +47,9 @@ data/ip/processor/ip-000001.yaml
 data/ip/interconnect/ip-000002.yaml
 ```
 
-This repository stores metadata and review information. It does not vendor the full upstream RTL source code.
+This repository stores synchronized metadata and review information. It does not vendor the full upstream RTL source code.
+
+Individual child repositories are the source of truth for their own `ip.yaml` files. `ip-catalog` syncs those files into `data/ip/<category>/<uid>.yaml` and generates the public indexes.
 
 ## Current Phase
 
@@ -55,6 +57,21 @@ The project is currently implementing P0/P1:
 
 - P0: scope, taxonomy, license policy, review process, contribution rules.
 - P1: Git repository MVP and first representative IP records.
+
+## Sync
+
+Child IP repositories are listed in:
+
+```text
+data/registry.yaml
+```
+
+To sync child metadata and rebuild indexes:
+
+```bash
+python3 scripts/sync-child-metadata.py
+python3 scripts/generate-index.py
+```
 
 See:
 

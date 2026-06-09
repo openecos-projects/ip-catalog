@@ -1,0 +1,5 @@
+children:
+  - uid: ip-000000
+    repository: https://github.com/openecos-projects/ip-000000
+    branch: main
+    metadata_path: ip.yaml

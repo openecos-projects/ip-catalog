@@ -15,6 +15,8 @@ This repository does not store child IP repository working copies.
 - Manage catalog metadata only in this repository.
 - Do not create or commit `child-repos/` in this repository.
 - Do not vendor upstream RTL source code into `ip-catalog`.
+- Treat child repository `ip.yaml` files as the source of truth for individual IP records.
+- Treat `data/ip/<category>/<uid>.yaml` as synchronized mirror data generated from child repositories.
 - Do not put simulation outputs, EDA build products, waveforms, downloaded source archives, or local secrets into this repository.
 - Every IP record must have a stable UID.
 - UID format is `ip-` plus six digits, for example `ip-000000`.
@@ -28,6 +30,7 @@ README.md
 AI_REPOSITORY_GUIDE.md
 docs/
 data/ip/<category>/<uid>.yaml
+data/registry.yaml
 schemas/
 scripts/
 generated/
@@ -36,7 +39,7 @@ site/
 
 ## IP Record Path
 
-Each IP record is stored at:
+Each synchronized IP record is stored at:
 
 ```text
 data/ip/<category>/<uid>.yaml
@@ -46,6 +49,26 @@ Example:
 
 ```text
 data/ip/peripheral/ip-000000.yaml
+```
+
+Do not manually edit synchronized IP records for long-term changes. Update the corresponding child repository `ip.yaml`, then run the sync script.
+
+## Child Registry
+
+Child repositories are listed in:
+
+```text
+data/registry.yaml
+```
+
+Example:
+
+```yaml
+children:
+  - uid: ip-000000
+    repository: https://github.com/openecos-projects/ip-000000
+    branch: main
+    metadata_path: ip.yaml
 ```
 
 ## Required Identity Fields
@@ -125,7 +148,14 @@ The child repository must keep the same `uid` as the catalog record.
 
 ## Index Generation
 
-After adding or editing IP records, regenerate the generated indexes:
+After adding or editing child repository metadata, synchronize records and regenerate generated indexes:
+
+```bash
+python3 scripts/sync-child-metadata.py
+python3 scripts/generate-index.py
+```
+
+If only local catalog YAML files changed, regenerate generated indexes:
 
 ```bash
 python3 scripts/generate-index.py
@@ -137,6 +167,25 @@ Generated outputs:
 generated/index.md
 generated/index.json
 ```
+
+## Child Metadata Sync
+
+Child metadata sync is automated by:
+
+```text
+.github/workflows/sync-child-metadata.yml
+```
+
+The workflow:
+
+1. Reads `data/registry.yaml`.
+2. Fetches each child repository `ip.yaml`.
+3. Verifies the child `uid`.
+4. Writes `data/ip/<category>/<uid>.yaml`.
+5. Regenerates `generated/index.md` and `generated/index.json`.
+6. Commits directly to `main` if there are changes.
+
+Direct commit is intentional because child repositories are maintained by the same team and `ip-catalog` is the aggregate display repository.
 
 ## GitHub Pages
 
