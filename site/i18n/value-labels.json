@@ -48,7 +48,7 @@
     },
     "interfaces": {
       "UART": "UART",
-      "APB-style": "APB 风格",
+      "APB-style": "类APB",
       "APB": "APB",
       "AXI4": "AXI4",
       "AXI4-Lite": "AXI4-Lite",

@@ -1,0 +1,160 @@
+uid: ip-000003
+repo_name: ip-000003
+slug: i2c-apb4-master
+display_name: APB4 I2C Master Controller
+summary: APB4-based single-master I2C controller with programmable prescaler, 7-bit addressing, and maskable transfer interrupt.
+summary_zh: 基于 APB4 总线的单主 I2C 控制器，兼容 Philips I2C 标准，支持可编程预分频、7 位寻址、100K/400K/1Mbps 速率场景以及可屏蔽传输中断；当前代码来自 20250627 流片工程快照。
+category: peripheral
+subcategories:
+  - i2c
+  - serial
+ip_family: i2c
+implementation_style: standard-compatible
+compatibility:
+  - amba-apb
+  - philips-i2c
+features:
+  - single-master
+  - programmable-prescaler
+  - 7-bit-addressing
+  - standard-fast-fast-plus-rate-support
+  - maskable-interrupt
+  - silicon-proven
+integration_profile:
+  - apb4-slave
+  - memory-mapped-peripheral
+resource_profile: small
+performance_profile: prescaler-limited-i2c
+best_for:
+  - small-mcu
+  - sensor-control
+  - eeprom-control
+  - fpga-demo
+not_recommended_for:
+  - multi-master-i2c
+  - 10-bit-addressing
+catalog:
+  repository: git@github.com:openecos-projects/ip-catalog.git
+  path: data/ip/peripheral/ip-000003.yaml
+links:
+  catalog_repository: https://github.com/openecos-projects/ip-000003
+  repository: https://github.com/oscc-ip/i2c
+  homepage: https://github.com/oscc-ip/i2c
+  documentation: https://github.com/oscc-ip/i2c/blob/main/doc/datasheet.md
+upstream:
+  owner: oscc-ip
+  repository: https://github.com/oscc-ip/i2c
+  author: Beijing Institute of Open Source Chip
+  contributors: []
+  status: active
+  default_branch: main
+  ref: main
+  ref_type: branch
+  commit: d51b3d9d4f13d3177cc5730029df8b456f758ef1
+  sync_policy: none
+tracking:
+  current_ref: source-snapshot-20250627
+  current_ref_type: snapshot
+  baseline_ref: source-snapshot-20250627
+  baseline_reviewed_at: 2026-06-09
+  update_policy: manual
+  provenance:
+    source_project: 20250627 tapeout project
+    source_snapshot: 20250627
+    silicon_validated: true
+    upstream_observed_commit: d51b3d9d4f13d3177cc5730029df8b456f758ef1
+versions:
+  - version: 1.0.0
+    ref: source-snapshot-20250627
+    date: 2025-06-27
+    status: silicon-validated
+    notes: Current RTL source drop comes from the 20250627 tapeout project code.
+technical:
+  languages:
+    - SystemVerilog
+    - C
+  interfaces:
+    - apb
+    - i2c
+    - interrupt
+  bus_compatibility:
+    - apb4
+  dependencies:
+    - local common RTL modules under rtl/
+  top_modules:
+    - apb4_i2c
+  registers:
+    - name: CTRL
+      offset: 0
+      width: 32
+      description: enable and interrupt enable control
+    - name: PSCR
+      offset: 4
+      width: 32
+      description: 16-bit prescaler
+    - name: TXR
+      offset: 8
+      width: 32
+      description: transmit data register
+    - name: RXR
+      offset: 12
+      width: 32
+      description: receive data register
+    - name: CMD
+      offset: 16
+      width: 32
+      description: start, stop, read, write, acknowledge, and interrupt acknowledge commands
+    - name: SR
+      offset: 20
+      width: 32
+      description: receive acknowledge, busy, arbitration lost, transfer-in-progress, and interrupt flags
+  clock_domains: single APB clock plus external I2C pins
+  reset_scheme: active-low APB reset
+  parameterizable: limited
+  target_process: generic
+  fpga_support: unknown
+  asic_support: proven-through-20250627-project
+  toolchains:
+    - vcs
+legal:
+  license: MulanPSL-2.0 AND SHL-0.51
+  license_file_present: true
+  license_risk: medium
+  patent_grant: explicit
+  commercial_use_allowed: unknown
+  notes:
+    - Repository LICENSE identifies the project as Mulan PSL v2.
+    - Some RTL files retain ETH Zurich / University of Bologna Solderpad Hardware License 0.51 provenance notices.
+quality:
+  maturity: silicon-proven
+  verification: silicon-validated
+  documentation_quality: basic
+  integration_difficulty: medium
+  silicon_proven: true
+  fpga_proven: unknown
+  notes:
+    - Current code comes from the 20250627 tapeout project source snapshot.
+    - SystemVerilog testbench sources and an EEPROM model are present.
+    - No local passing simulation, lint, synthesis, coverage, or silicon validation report artifact is currently recorded.
+internal:
+  status: candidate
+  next_action: Attach tapeout validation evidence and run a reproducible simulation/lint baseline.
+  source_mirror: true
+  mirror_policy: source-mirror
+  silicon_proven: true
+  source_project: 20250627 tapeout project
+  review_notes: reports/review-summary.md
+  integration_notes:
+    - RTL include paths assume `rtl`, `rtl/interface`, `rtl/tech`, and `rtl/verif` are on the SystemVerilog include search path.
+    - Common support modules required by the IP have been copied locally for standalone catalog review.
+  used_versions:
+    - 1.0.0
+  used_in_projects:
+    - 20250627 tapeout project
+  rejection_reason: null
+metadata:
+  first_seen_at: 2026-06-09
+  last_reviewed_at: 2026-06-09
+  data_quality: partial
+  maintainers:
+    - openecos-projects

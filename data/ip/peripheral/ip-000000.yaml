@@ -6,6 +6,7 @@ catalog:
 slug: uart
 display_name: SYS_UART
 summary: Silicon-validated UART 16550-compatible serial controller with an APB-style wrapper.
+summary_zh: 面向 SoC 串口控制台的 UART 16550 兼容控制器，带本地 APB 风格封装，支持收发 FIFO、可编程波特率分频和基础中断/线路控制寄存器；当前代码来自 2025-06-27 流片工程并已完成硅验证。
 category: peripheral
 subcategories:
   - uart

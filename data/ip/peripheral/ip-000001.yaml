@@ -3,6 +3,7 @@ repo_name: ip-000001
 slug: uart-retrosoc-apb4
 display_name: APB4 UART Controller
 summary: APB4-based UART controller with configurable serial format, TX/RX FIFOs, programmable baud divider, and maskable interrupts.
+summary_zh: 基于 APB4 总线的 UART 控制器，支持可配置数据位、停止位、校验位、可编程波特率分频、独立收发 FIFO 和可屏蔽中断；当前代码为 20250627 流片工程快照，并记录为已硅验证候选 IP。
 category: peripheral
 subcategories:
   - uart
@@ -17,6 +18,7 @@ features:
   - parity
   - programmable-baud
   - configurable-word-length
+  - silicon-proven
 integration_profile:
   - apb4-slave
 best_for:
@@ -51,6 +53,10 @@ tracking:
   baseline_ref: source-snapshot-20250627
   baseline_reviewed_at: 2026-06-09
   update_policy: manual
+  provenance:
+    source_project: 20250627 tapeout project
+    source_snapshot: 20250627
+    silicon_validated: true
 technical:
   languages:
     - SystemVerilog
@@ -77,18 +83,22 @@ legal:
     - Some files retain Solderpad Hardware License 0.51 provenance notices from ETH Zurich and University of Bologna.
     - Add license texts and complete per-file SPDX review before approval.
 quality:
-  maturity: candidate
-  verification: testbench-present
+  maturity: silicon-proven
+  verification: silicon-validated
   documentation_quality: basic
   integration_difficulty: medium
   notes:
+    - Current code comes from the 20250627 tapeout project source snapshot.
+    - IP has been silicon validated according to the provided project provenance.
     - SystemVerilog testbench sources are present under tb/ and model/.
-    - No local passing simulation, lint, synthesis, or coverage report is currently recorded.
+    - No local passing simulation, lint, synthesis, coverage, or silicon validation report artifact is currently recorded.
 internal:
   status: candidate
-  next_action: Complete license file review and run a reproducible simulation/lint baseline.
+  next_action: Attach tapeout validation evidence, complete license file review, and run a reproducible simulation/lint baseline.
   source_mirror: true
   mirror_policy: source-mirror
+  silicon_proven: true
+  source_project: 20250627 tapeout project
 metadata:
   first_seen_at: 2026-06-09
   last_reviewed_at: 2026-06-09

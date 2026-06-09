@@ -237,7 +237,6 @@
           open: "打开",
           columns: {
             display_name: "名称",
-            ip_repository: "IP 仓库",
             ip_family: "功能族",
             category: "分类",
             status: "状态",
@@ -256,7 +255,6 @@
           open: "Open",
           columns: {
             display_name: "Name",
-            ip_repository: "IP Repo",
             ip_family: "Family",
             category: "Category",
             status: "Status",
@@ -269,7 +267,6 @@
 
       const columns = [
         { key: "display_name" },
-        { key: "ip_repository" },
         { key: "ip_family" },
         { key: "category" },
         { key: "status" },
@@ -323,15 +320,6 @@
           const link = document.createElement("a");
           link.href = record.catalog_repository;
           link.textContent = asText(value);
-          return link;
-        }
-        if (column.key === "ip_repository") {
-          if (!record.ip_repository) return document.createTextNode(t().unknown);
-          const link = document.createElement("a");
-          link.href = record.ip_repository;
-          link.textContent = t().open;
-          link.target = "_blank";
-          link.rel = "noopener noreferrer";
           return link;
         }
         if (column.key === "status") {

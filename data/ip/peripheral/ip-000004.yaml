@@ -1,0 +1,174 @@
+uid: ip-000004
+repo_name: ip-000004
+slug: gpio-apb4
+display_name: APB4 GPIO Controller
+summary: APB4-based 32-channel GPIO controller with direction control, alternate-function muxing, and configurable input interrupts.
+summary_zh: 基于 APB4 总线的 32 路 GPIO 控制器，支持输入/输出方向配置、软件与复用功能输出选择、可屏蔽输入中断，以及高/低电平和上升/下降沿触发模式；当前代码来自 20250627 流片工程快照。
+category: peripheral
+subcategories:
+  - gpio
+ip_family: gpio
+implementation_style: standard-compatible
+compatibility:
+  - amba-apb
+features:
+  - up-to-32-gpio-channels
+  - input-output-direction-control
+  - alternate-function-mux
+  - maskable-interrupts
+  - high-low-rise-fall-trigger-modes
+  - silicon-proven
+integration_profile:
+  - apb4-slave
+  - memory-mapped-peripheral
+resource_profile: small
+performance_profile: single-cycle-apb-register-access
+best_for:
+  - small-mcu
+  - fpga-demo
+  - SoC board-control
+not_recommended_for:
+  - designs requiring more than 32 GPIO channels without RTL changes
+catalog:
+  repository: git@github.com:openecos-projects/ip-catalog.git
+  path: data/ip/peripheral/ip-000004.yaml
+links:
+  catalog_repository: https://github.com/openecos-projects/ip-000004
+  repository: https://github.com/oscc-ip/gpio
+  homepage: https://github.com/oscc-ip/gpio
+  documentation: https://github.com/oscc-ip/gpio/blob/main/doc/datasheet.md
+upstream:
+  owner: oscc-ip
+  repository: https://github.com/oscc-ip/gpio
+  author: Beijing Institute of Open Source Chip
+  contributors: []
+  status: active
+  default_branch: main
+  ref: main
+  ref_type: branch
+  commit: 9b578f0d4f9e0da5e7c852c3b2ebcb45c54a8d16
+  sync_policy: none
+tracking:
+  current_ref: source-snapshot-20250627
+  current_ref_type: snapshot
+  baseline_ref: source-snapshot-20250627
+  baseline_reviewed_at: 2026-06-09
+  update_policy: manual
+  provenance:
+    source_project: 20250627 tapeout project
+    source_snapshot: 20250627
+    silicon_validated: true
+    upstream_observed_commit: 9b578f0d4f9e0da5e7c852c3b2ebcb45c54a8d16
+versions:
+  - version: 1.0.0
+    ref: source-snapshot-20250627
+    date: 2025-06-27
+    status: silicon-validated
+    notes: Current RTL source drop comes from the 20250627 tapeout project code.
+technical:
+  languages:
+    - SystemVerilog
+    - C
+  interfaces:
+    - apb
+    - gpio
+    - interrupt
+  bus_compatibility:
+    - apb4
+  dependencies:
+    - local common RTL modules under rtl/
+  top_modules:
+    - apb4_gpio
+  registers:
+    - name: PADDIR
+      offset: 0
+      width: 32
+      description: GPIO direction register
+    - name: PADIN
+      offset: 4
+      width: 32
+      description: GPIO input data register
+    - name: PADOUT
+      offset: 8
+      width: 32
+      description: GPIO output data register
+    - name: INTEN
+      offset: 12
+      width: 32
+      description: interrupt enable register
+    - name: INTTYPE0
+      offset: 16
+      width: 32
+      description: interrupt trigger mode bit 0
+    - name: INTTYPE1
+      offset: 20
+      width: 32
+      description: interrupt trigger mode bit 1
+    - name: INTSTAT
+      offset: 24
+      width: 32
+      description: interrupt status register
+    - name: IOCFG
+      offset: 28
+      width: 32
+      description: software versus alternate-function control selection
+    - name: PINMUX
+      offset: 32
+      width: 32
+      description: alternate-function channel selection
+  clock_domains: single APB clock plus asynchronous GPIO inputs
+  reset_scheme: active-low APB reset
+  parameterizable: limited
+  parameters:
+    - name: GPIO_PIN_NUM
+      type: SystemVerilog define
+      default: 32
+      description: Number of GPIO pins exposed by the interface.
+  target_process: generic
+  fpga_support: unknown
+  asic_support: proven-through-20250627-project
+  toolchains:
+    - vcs
+    - iverilog
+legal:
+  license: MulanPSL-2.0 AND SHL-0.51
+  license_file_present: true
+  license_risk: medium
+  patent_grant: explicit
+  commercial_use_allowed: unknown
+  notes:
+    - Repository LICENSE identifies the project as Mulan PSL v2.
+    - Some RTL files retain ETH Zurich / University of Bologna Solderpad Hardware License 0.51 provenance notices.
+quality:
+  maturity: silicon-proven
+  verification: silicon-validated
+  documentation_quality: basic
+  integration_difficulty: medium
+  silicon_proven: true
+  fpga_proven: unknown
+  notes:
+    - Current code comes from the 20250627 tapeout project source snapshot.
+    - SystemVerilog testbench sources and GPIO helper models are present.
+    - No local passing simulation, lint, synthesis, coverage, or silicon validation report artifact is currently recorded.
+internal:
+  status: candidate
+  next_action: Attach tapeout validation evidence and run a reproducible simulation/lint baseline.
+  source_mirror: true
+  mirror_policy: source-mirror
+  silicon_proven: true
+  source_project: 20250627 tapeout project
+  review_notes: reports/review-summary.md
+  integration_notes:
+    - RTL include paths assume `rtl`, `rtl/cdc`, `rtl/interface`, and `rtl/verif` are on the SystemVerilog include search path.
+    - Common support modules required by the IP have been copied locally for standalone catalog review.
+  used_versions:
+    - 1.0.0
+  used_in_projects:
+    - 20250627 tapeout project
+  rejection_reason: null
+metadata:
+  first_seen_at: 2026-06-09
+  last_reviewed_at: 2026-06-09
+  data_quality: partial
+  maintainers:
+    - openecos-projects

@@ -1,6 +1,6 @@
 {
   "generated_from": "data/ip/**/*.yaml",
-  "total": 2,
+  "total": 5,
   "records": [
     {
       "uid": "ip-000000",
@@ -95,7 +95,8 @@
         "interrupt",
         "parity",
         "programmable-baud",
-        "configurable-word-length"
+        "configurable-word-length",
+        "silicon-proven"
       ],
       "integration_profile": [
         "apb4-slave"
@@ -133,17 +134,239 @@
       "target_process": "generic",
       "fpga_support": "unknown",
       "asic_support": "unknown",
-      "maturity": "candidate",
+      "maturity": "silicon-proven",
       "documentation_quality": "basic",
       "integration_difficulty": "medium",
       "license": "MulanPSL-2.0 AND SHL-0.51",
       "license_risk": "medium",
       "commercial_use_allowed": "unknown",
       "status": "candidate",
-      "next_action": "Complete license file review and run a reproducible simulation/lint baseline.",
+      "next_action": "Attach tapeout validation evidence, complete license file review, and run a reproducible simulation/lint baseline.",
       "data_quality": "partial",
       "last_reviewed_at": "2026-06-09",
       "path": "data/ip/peripheral/ip-000001.yaml"
+    },
+    {
+      "uid": "ip-000002",
+      "repo_name": "ip-000002",
+      "slug": "archinfo-apb4",
+      "display_name": "APB4 Architecture Info Register Block",
+      "summary": "APB4-accessible architecture information register block for SoC, process, vendor, and tapeout date metadata.",
+      "category": "peripheral",
+      "subcategories": [
+        "system-info",
+        "identification"
+      ],
+      "ip_family": "archinfo",
+      "implementation_style": "standard-compatible",
+      "compatibility": [
+        "amba-apb"
+      ],
+      "features": [
+        "architecture-info-registers",
+        "system-clock-and-sram-metadata",
+        "process-and-vendor-identification",
+        "tapeout-date-register",
+        "programmable-test-registers",
+        "silicon-proven"
+      ],
+      "integration_profile": [
+        "apb4-slave",
+        "memory-mapped-peripheral"
+      ],
+      "resource_profile": "tiny",
+      "performance_profile": "single-cycle-apb-access",
+      "best_for": [
+        "small-mcu",
+        "SoC identification",
+        "tapeout metadata reporting"
+      ],
+      "not_recommended_for": [
+        "designs requiring immutable read-only registers without reviewing write-enable policy"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/ip-000002",
+      "ip_repository": "https://github.com/openecos-projects/ip-000002",
+      "upstream_repository": "https://github.com/oscc-ip/archinfo",
+      "homepage": "https://github.com/oscc-ip/archinfo",
+      "documentation": "https://github.com/oscc-ip/archinfo/blob/main/doc/datasheet.md",
+      "upstream_owner": "oscc-ip",
+      "upstream_status": "active",
+      "current_ref": "source-snapshot-20250627",
+      "current_ref_type": "snapshot",
+      "languages": [
+        "SystemVerilog",
+        "C"
+      ],
+      "interfaces": [
+        "apb"
+      ],
+      "bus_compatibility": [
+        "apb4"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "proven-through-20250627-project",
+      "maturity": "silicon-proven",
+      "documentation_quality": "basic",
+      "integration_difficulty": "low",
+      "license": "MulanPSL-2.0",
+      "license_risk": "low",
+      "commercial_use_allowed": true,
+      "status": "candidate",
+      "next_action": "Attach tapeout validation evidence and run a reproducible simulation/lint baseline.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-09",
+      "path": "data/ip/peripheral/ip-000002.yaml"
+    },
+    {
+      "uid": "ip-000003",
+      "repo_name": "ip-000003",
+      "slug": "i2c-apb4-master",
+      "display_name": "APB4 I2C Master Controller",
+      "summary": "APB4-based single-master I2C controller with programmable prescaler, 7-bit addressing, and maskable transfer interrupt.",
+      "category": "peripheral",
+      "subcategories": [
+        "i2c",
+        "serial"
+      ],
+      "ip_family": "i2c",
+      "implementation_style": "standard-compatible",
+      "compatibility": [
+        "amba-apb",
+        "philips-i2c"
+      ],
+      "features": [
+        "single-master",
+        "programmable-prescaler",
+        "7-bit-addressing",
+        "standard-fast-fast-plus-rate-support",
+        "maskable-interrupt",
+        "silicon-proven"
+      ],
+      "integration_profile": [
+        "apb4-slave",
+        "memory-mapped-peripheral"
+      ],
+      "resource_profile": "small",
+      "performance_profile": "prescaler-limited-i2c",
+      "best_for": [
+        "small-mcu",
+        "sensor-control",
+        "eeprom-control",
+        "fpga-demo"
+      ],
+      "not_recommended_for": [
+        "multi-master-i2c",
+        "10-bit-addressing"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/ip-000003",
+      "ip_repository": "https://github.com/openecos-projects/ip-000003",
+      "upstream_repository": "https://github.com/oscc-ip/i2c",
+      "homepage": "https://github.com/oscc-ip/i2c",
+      "documentation": "https://github.com/oscc-ip/i2c/blob/main/doc/datasheet.md",
+      "upstream_owner": "oscc-ip",
+      "upstream_status": "active",
+      "current_ref": "source-snapshot-20250627",
+      "current_ref_type": "snapshot",
+      "languages": [
+        "SystemVerilog",
+        "C"
+      ],
+      "interfaces": [
+        "apb",
+        "i2c",
+        "interrupt"
+      ],
+      "bus_compatibility": [
+        "apb4"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "proven-through-20250627-project",
+      "maturity": "silicon-proven",
+      "documentation_quality": "basic",
+      "integration_difficulty": "medium",
+      "license": "MulanPSL-2.0 AND SHL-0.51",
+      "license_risk": "medium",
+      "commercial_use_allowed": "unknown",
+      "status": "candidate",
+      "next_action": "Attach tapeout validation evidence and run a reproducible simulation/lint baseline.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-09",
+      "path": "data/ip/peripheral/ip-000003.yaml"
+    },
+    {
+      "uid": "ip-000004",
+      "repo_name": "ip-000004",
+      "slug": "gpio-apb4",
+      "display_name": "APB4 GPIO Controller",
+      "summary": "APB4-based 32-channel GPIO controller with direction control, alternate-function muxing, and configurable input interrupts.",
+      "category": "peripheral",
+      "subcategories": [
+        "gpio"
+      ],
+      "ip_family": "gpio",
+      "implementation_style": "standard-compatible",
+      "compatibility": [
+        "amba-apb"
+      ],
+      "features": [
+        "up-to-32-gpio-channels",
+        "input-output-direction-control",
+        "alternate-function-mux",
+        "maskable-interrupts",
+        "high-low-rise-fall-trigger-modes",
+        "silicon-proven"
+      ],
+      "integration_profile": [
+        "apb4-slave",
+        "memory-mapped-peripheral"
+      ],
+      "resource_profile": "small",
+      "performance_profile": "single-cycle-apb-register-access",
+      "best_for": [
+        "small-mcu",
+        "fpga-demo",
+        "SoC board-control"
+      ],
+      "not_recommended_for": [
+        "designs requiring more than 32 GPIO channels without RTL changes"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/ip-000004",
+      "ip_repository": "https://github.com/openecos-projects/ip-000004",
+      "upstream_repository": "https://github.com/oscc-ip/gpio",
+      "homepage": "https://github.com/oscc-ip/gpio",
+      "documentation": "https://github.com/oscc-ip/gpio/blob/main/doc/datasheet.md",
+      "upstream_owner": "oscc-ip",
+      "upstream_status": "active",
+      "current_ref": "source-snapshot-20250627",
+      "current_ref_type": "snapshot",
+      "languages": [
+        "SystemVerilog",
+        "C"
+      ],
+      "interfaces": [
+        "apb",
+        "gpio",
+        "interrupt"
+      ],
+      "bus_compatibility": [
+        "apb4"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "proven-through-20250627-project",
+      "maturity": "silicon-proven",
+      "documentation_quality": "basic",
+      "integration_difficulty": "medium",
+      "license": "MulanPSL-2.0 AND SHL-0.51",
+      "license_risk": "medium",
+      "commercial_use_allowed": "unknown",
+      "status": "candidate",
+      "next_action": "Attach tapeout validation evidence and run a reproducible simulation/lint baseline.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-09",
+      "path": "data/ip/peripheral/ip-000004.yaml"
     }
   ]
 }
