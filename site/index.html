@@ -249,6 +249,7 @@
       const columns = [
         { key: "uid", label: "UID", required: true },
         { key: "display_name", label: "Name", required: true },
+        { key: "ip_repository", label: "IP Repo" },
         { key: "ip_family", label: "Family" },
         { key: "category", label: "Category" },
         { key: "status", label: "Status" },
@@ -272,6 +273,7 @@
         "license",
         "maturity",
         "upstream_owner",
+        "ip_repository",
       ]);
 
       let records = [];
@@ -368,6 +370,15 @@
           const link = document.createElement("a");
           link.href = record.catalog_repository;
           link.textContent = asText(value);
+          return link;
+        }
+        if (column.key === "ip_repository") {
+          if (!record.ip_repository) return document.createTextNode("unknown");
+          const link = document.createElement("a");
+          link.href = record.ip_repository;
+          link.textContent = "Open";
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
           return link;
         }
         if (column.key === "status" || column.key === "license_risk") {

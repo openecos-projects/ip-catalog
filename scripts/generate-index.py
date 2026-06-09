@@ -83,6 +83,7 @@ def compact_record(record: dict[str, Any]) -> dict[str, Any]:
         "best_for": record.get("best_for", []),
         "not_recommended_for": record.get("not_recommended_for", []),
         "catalog_repository": value(record, "links", "catalog_repository"),
+        "ip_repository": value(record, "links", "catalog_repository"),
         "upstream_repository": value(record, "links", "repository"),
         "homepage": value(record, "links", "homepage"),
         "documentation": value(record, "links", "documentation"),

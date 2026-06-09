@@ -41,6 +41,7 @@
         "designs requiring a pinned upstream release without extra provenance work"
       ],
       "catalog_repository": "https://github.com/openecos-projects/ip-000000",
+      "ip_repository": "https://github.com/openecos-projects/ip-000000",
       "upstream_repository": "https://github.com/freecores/uart16550",
       "homepage": "https://opencores.org/projects/uart16550",
       "documentation": "https://opencores.org/projects/uart16550",
