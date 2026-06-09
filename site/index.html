@@ -60,6 +60,19 @@
         text-decoration: none;
       }
 
+      .download-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+        padding: 0 10px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--panel);
+        color: var(--text);
+        font-weight: 600;
+        text-decoration: none;
+      }
+
       .header-actions {
         display: flex;
         align-items: center;
@@ -208,6 +221,7 @@
             <button id="langZh" type="button" class="active">中文</button>
             <button id="langEn" type="button">EN</button>
           </div>
+          <a id="downloadJson" class="download-link" href="generated/index.json" download="ip-catalog-index.json">下载 JSON</a>
           <a class="repo-link" href="https://github.com/openecos-projects/ip-catalog">GitHub</a>
         </div>
       </div>
@@ -235,6 +249,7 @@
           loadError: "无法加载 catalog 数据。",
           unknown: "未知",
           open: "打开",
+          downloadJson: "下载 JSON",
           columns: {
             display_name: "名称",
             ip_family: "功能族",
@@ -253,6 +268,7 @@
           loadError: "Unable to load catalog data.",
           unknown: "unknown",
           open: "Open",
+          downloadJson: "Download JSON",
           columns: {
             display_name: "Name",
             ip_family: "Family",
@@ -285,6 +301,7 @@
         tableWrap: document.querySelector("#tableWrap"),
         langZh: document.querySelector("#langZh"),
         langEn: document.querySelector("#langEn"),
+        downloadJson: document.querySelector("#downloadJson"),
       };
 
       function t() {
@@ -340,6 +357,7 @@
         document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
         els.langZh.classList.toggle("active", lang === "zh");
         els.langEn.classList.toggle("active", lang === "en");
+        els.downloadJson.textContent = t().downloadJson;
 
         if (!records.length) {
           els.tableWrap.innerHTML = `<div class="empty">${t().empty}</div>`;
