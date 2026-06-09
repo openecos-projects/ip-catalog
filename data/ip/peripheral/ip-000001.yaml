@@ -1,0 +1,97 @@
+uid: ip-000001
+repo_name: ip-000001
+slug: uart-retrosoc-apb4
+display_name: APB4 UART Controller
+summary: APB4-based UART controller with configurable serial format, TX/RX FIFOs, programmable baud divider, and maskable interrupts.
+category: peripheral
+subcategories:
+  - uart
+ip_family: uart
+implementation_style: standard-compatible
+compatibility:
+  - ns16550-compatible
+  - amba-apb
+features:
+  - fifo
+  - interrupt
+  - parity
+  - programmable-baud
+  - configurable-word-length
+integration_profile:
+  - apb4-slave
+best_for:
+  - small-mcu
+  - fpga-demo
+  - education
+not_recommended_for:
+  - production-asic-without-license-review
+catalog:
+  repository: git@github.com:openecos-projects/ip-catalog.git
+  path: data/ip/peripheral/ip-000001.yaml
+links:
+  catalog_repository: https://github.com/openecos-projects/ip-000001
+  repository: https://github.com/retroSoC/uart
+  homepage: https://github.com/retroSoC/uart
+  documentation: https://github.com/retroSoC/uart/blob/main/doc/datasheet.md
+upstream:
+  owner: retroSoC
+  repository: https://github.com/retroSoC/uart
+  author: retroSoC
+  contributors:
+    - maksyuki
+  status: active
+  default_branch: main
+  ref: main
+  ref_type: branch
+  commit: null
+  sync_policy: none
+tracking:
+  current_ref: source-snapshot-20250627
+  current_ref_type: snapshot
+  baseline_ref: source-snapshot-20250627
+  baseline_reviewed_at: 2026-06-09
+  update_policy: manual
+technical:
+  languages:
+    - SystemVerilog
+  interfaces:
+    - apb
+    - uart
+    - interrupt
+  bus_compatibility:
+    - apb4
+  dependencies:
+    - local common RTL modules under rtl/
+  top_modules:
+    - apb4_uart
+  target_process: generic
+  fpga_support: unknown
+  asic_support: unknown
+legal:
+  license: MulanPSL-2.0 AND SHL-0.51
+  license_file_present: false
+  license_risk: medium
+  commercial_use_allowed: unknown
+  notes:
+    - Upstream GitHub metadata identifies the project license as MulanPSL-2.0.
+    - Some files retain Solderpad Hardware License 0.51 provenance notices from ETH Zurich and University of Bologna.
+    - Add license texts and complete per-file SPDX review before approval.
+quality:
+  maturity: candidate
+  verification: testbench-present
+  documentation_quality: basic
+  integration_difficulty: medium
+  notes:
+    - SystemVerilog testbench sources are present under tb/ and model/.
+    - No local passing simulation, lint, synthesis, or coverage report is currently recorded.
+internal:
+  status: candidate
+  next_action: Complete license file review and run a reproducible simulation/lint baseline.
+  source_mirror: true
+  mirror_policy: source-mirror
+metadata:
+  first_seen_at: 2026-06-09
+  last_reviewed_at: 2026-06-09
+  data_quality: partial
+  maintainers:
+    - openecos-projects

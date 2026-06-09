@@ -1,6 +1,6 @@
 {
   "generated_from": "data/ip/**/*.yaml",
-  "total": 1,
+  "total": 2,
   "records": [
     {
       "uid": "ip-000000",
@@ -73,6 +73,77 @@
       "data_quality": "reviewed",
       "last_reviewed_at": "2026-06-09",
       "path": "data/ip/peripheral/ip-000000.yaml"
+    },
+    {
+      "uid": "ip-000001",
+      "repo_name": "ip-000001",
+      "slug": "uart-retrosoc-apb4",
+      "display_name": "APB4 UART Controller",
+      "summary": "APB4-based UART controller with configurable serial format, TX/RX FIFOs, programmable baud divider, and maskable interrupts.",
+      "category": "peripheral",
+      "subcategories": [
+        "uart"
+      ],
+      "ip_family": "uart",
+      "implementation_style": "standard-compatible",
+      "compatibility": [
+        "ns16550-compatible",
+        "amba-apb"
+      ],
+      "features": [
+        "fifo",
+        "interrupt",
+        "parity",
+        "programmable-baud",
+        "configurable-word-length"
+      ],
+      "integration_profile": [
+        "apb4-slave"
+      ],
+      "resource_profile": "",
+      "performance_profile": "",
+      "best_for": [
+        "small-mcu",
+        "fpga-demo",
+        "education"
+      ],
+      "not_recommended_for": [
+        "production-asic-without-license-review"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/ip-000001",
+      "ip_repository": "https://github.com/openecos-projects/ip-000001",
+      "upstream_repository": "https://github.com/retroSoC/uart",
+      "homepage": "https://github.com/retroSoC/uart",
+      "documentation": "https://github.com/retroSoC/uart/blob/main/doc/datasheet.md",
+      "upstream_owner": "retroSoC",
+      "upstream_status": "active",
+      "current_ref": "source-snapshot-20250627",
+      "current_ref_type": "snapshot",
+      "languages": [
+        "SystemVerilog"
+      ],
+      "interfaces": [
+        "apb",
+        "uart",
+        "interrupt"
+      ],
+      "bus_compatibility": [
+        "apb4"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "unknown",
+      "maturity": "candidate",
+      "documentation_quality": "basic",
+      "integration_difficulty": "medium",
+      "license": "MulanPSL-2.0 AND SHL-0.51",
+      "license_risk": "medium",
+      "commercial_use_allowed": "unknown",
+      "status": "candidate",
+      "next_action": "Complete license file review and run a reproducible simulation/lint baseline.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-09",
+      "path": "data/ip/peripheral/ip-000001.yaml"
     }
   ]
 }

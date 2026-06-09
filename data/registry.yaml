@@ -3,3 +3,7 @@ children:
     repository: https://github.com/openecos-projects/ip-000000
     branch: main
     metadata_path: ip.yaml
+  - uid: ip-000001
+    repository: https://github.com/openecos-projects/ip-000001
+    branch: main
+    metadata_path: ip.yaml
