@@ -150,6 +150,7 @@ The workflow deploys:
 
 ```text
 site/index.html -> /index.html
+site/i18n/value-labels.json -> /i18n/value-labels.json
 generated/index.json -> /generated/index.json
 generated/index.md -> /generated/index.md
 ```

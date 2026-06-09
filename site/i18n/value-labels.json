@@ -1,0 +1,60 @@
+{
+  "zh": {
+    "category": {
+      "peripheral": "外设",
+      "processor": "处理器",
+      "accelerator": "加速器",
+      "interconnect": "互连",
+      "memory": "存储",
+      "security": "安全",
+      "dsp": "数字信号处理",
+      "video": "视频/图像",
+      "debug-test": "调试/测试",
+      "soc-platform": "SoC 平台",
+      "eda-support": "EDA 辅助"
+    },
+    "ip_family": {
+      "uart": "UART",
+      "spi": "SPI",
+      "i2c": "I2C",
+      "gpio": "GPIO",
+      "timer": "定时器",
+      "dma": "DMA",
+      "risc-v-core": "RISC-V 处理器核",
+      "interrupt-controller": "中断控制器",
+      "axi-interconnect": "AXI 互连",
+      "apb-bridge": "APB 桥",
+      "sram-controller": "SRAM 控制器",
+      "cache": "缓存",
+      "aes": "AES",
+      "sha": "SHA",
+      "jtag": "JTAG",
+      "debug-module": "调试模块"
+    },
+    "status": {
+      "candidate": "候选",
+      "evaluating": "评估中",
+      "approved": "已批准",
+      "used": "已使用",
+      "rejected": "已拒绝",
+      "needs-review": "需复核",
+      "deprecated": "已废弃"
+    },
+    "maturity": {
+      "experimental": "实验性",
+      "usable": "可用",
+      "production": "生产候选",
+      "silicon-proven": "已流片验证"
+    },
+    "interfaces": {
+      "UART": "UART",
+      "APB-style": "APB 风格",
+      "APB": "APB",
+      "AXI4": "AXI4",
+      "AXI4-Lite": "AXI4-Lite",
+      "Wishbone": "Wishbone",
+      "TileLink": "TileLink"
+    }
+  },
+  "en": {}
+}
