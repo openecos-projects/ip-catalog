@@ -7,7 +7,7 @@
       "repo_name": "ip-000000",
       "slug": "uart",
       "display_name": "SYS_UART",
-      "summary": "UART 16550-compatible serial controller with an APB-style wrapper.",
+      "summary": "Silicon-validated UART 16550-compatible serial controller with an APB-style wrapper.",
       "category": "peripheral",
       "subcategories": [
         "uart",
@@ -47,8 +47,8 @@
       "documentation": "https://opencores.org/projects/uart16550",
       "upstream_owner": "OpenCores / FreeCores",
       "upstream_status": "mirrored-with-local-wrapper",
-      "current_ref": "local-source-drop",
-      "current_ref_type": "mirror",
+      "current_ref": "2025-06-27-tapeout-project-code",
+      "current_ref_type": "project-source-drop",
       "languages": [
         "Verilog"
       ],
@@ -62,15 +62,15 @@
       "target_process": "process-independent",
       "fpga_support": "likely",
       "asic_support": "unknown",
-      "maturity": "experimental",
+      "maturity": "silicon-proven",
       "documentation_quality": "basic",
       "integration_difficulty": "medium",
       "license": "LGPL-2.1-or-later",
       "license_risk": "medium",
       "commercial_use_allowed": true,
       "status": "candidate",
-      "next_action": "pin-upstream-baseline-and-run-basic-lint-simulation",
-      "data_quality": "draft",
+      "next_action": "attach-tapeout-provenance-and-basic-verification-reports",
+      "data_quality": "reviewed",
       "last_reviewed_at": "2026-06-09",
       "path": "data/ip/peripheral/ip-000000.yaml"
     }

@@ -5,7 +5,7 @@ catalog:
   path: data/ip/peripheral/ip-000000.yaml
 slug: uart
 display_name: SYS_UART
-summary: UART 16550-compatible serial controller with an APB-style wrapper.
+summary: Silicon-validated UART 16550-compatible serial controller with an APB-style wrapper.
 category: peripheral
 subcategories:
   - uart
@@ -46,13 +46,17 @@ upstream:
   latest_commit: null
   latest_commit_at: null
 tracking:
-  current_ref: local-source-drop
-  current_ref_type: mirror
-  baseline_ref: unknown
+  current_ref: 2025-06-27-tapeout-project-code
+  current_ref_type: project-source-drop
+  baseline_ref: 2025-06-27 tapeout project code
   baseline_reviewed_at: 2026-06-09
   update_policy: manual
 versions:
-  - 1.0.0
+  - version: 1.0.0
+    ref: 2025-06-27-tapeout-project-code
+    date: 2025-06-27
+    status: silicon-validated
+    notes: Current RTL source drop comes from the 2025-06-27 tapeout project code.
 technical:
   languages:
     - Verilog
@@ -84,22 +88,23 @@ technical:
     docs: basic
     constraints: absent
 quality:
-  maturity: experimental
+  maturity: silicon-proven
   verification:
     simulation: unknown
     formal: unknown
     uvm: absent
     fpga: unknown
-    silicon: unknown
+    silicon: proven
   ci_status: absent
-  known_users: []
-  silicon_proven: unknown
+  known_users:
+    - 2025-06-27 tapeout project
+  silicon_proven: true
   fpga_proven: unknown
   documentation_quality: basic
   integration_difficulty: medium
   known_issues:
     - Upstream commit for the mirrored RTL source drop is not pinned.
-    - No local simulation, lint, synthesis, or formal reports are present.
+    - Local simulation, lint, synthesis, and tapeout reports are not included in this repository yet.
     - APB wrapper comments label uart_rx/uart_tx directions inconsistently with signal names.
 legal:
   license: LGPL-2.1-or-later
@@ -120,13 +125,16 @@ internal:
   integration_notes:
     - APB wrapper is included locally and instantiates the 8-bit UART register core.
     - RTL include paths assume `rtl` is on the Verilog include search path.
+    - Current code comes from the 2025-06-27 tapeout project code and has been silicon validated.
   local_patches:
     - APB wrapper added as rtl/uart_apb.v
-  used_versions: []
-  used_in_projects: []
+  used_versions:
+    - 1.0.0
+  used_in_projects:
+    - 2025-06-27 tapeout project
   rejection_reason: null
-  next_action: pin-upstream-baseline-and-run-basic-lint-simulation
+  next_action: attach-tapeout-provenance-and-basic-verification-reports
 metadata:
   first_seen_at: 2026-06-09
   last_reviewed_at: 2026-06-09
-  data_quality: draft
+  data_quality: reviewed
