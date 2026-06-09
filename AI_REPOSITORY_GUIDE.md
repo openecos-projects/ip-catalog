@@ -138,6 +138,28 @@ generated/index.md
 generated/index.json
 ```
 
+## GitHub Pages
+
+Repository-level GitHub Pages is deployed by:
+
+```text
+.github/workflows/pages.yml
+```
+
+The workflow deploys:
+
+```text
+site/index.html -> /index.html
+generated/index.json -> /generated/index.json
+generated/index.md -> /generated/index.md
+```
+
+Public URL:
+
+```text
+https://openecos-projects.github.io/ip-catalog/
+```
+
 ## Current First IP
 
 Current first IP:

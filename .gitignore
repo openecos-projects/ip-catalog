@@ -34,6 +34,7 @@ build/
 .next/
 .nuxt/
 coverage/
+_site/
 
 # Generated local caches
 .cache/

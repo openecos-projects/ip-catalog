@@ -60,6 +60,7 @@ See:
 
 - [AI repository guide](AI_REPOSITORY_GUIDE.md)
 - [Web catalog](site/index.html)
+- GitHub Pages: `https://openecos-projects.github.io/ip-catalog/`
 - [IP index](generated/index.md)
 - [Database plan](docs/ip-database-plan.md)
 - [Implementation roadmap](docs/implementation-roadmap.md)
