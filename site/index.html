@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,19 +60,37 @@
         text-decoration: none;
       }
 
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .lang-toggle {
+        display: inline-flex;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--panel);
+      }
+
+      .lang-toggle button {
+        min-height: 32px;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: var(--muted);
+      }
+
+      .lang-toggle button.active {
+        background: var(--accent);
+        color: #fff;
+      }
+
       main {
         padding: 20px 0 36px;
       }
 
-      .toolbar {
-        display: grid;
-        grid-template-columns: minmax(240px, 1.6fr) repeat(4, minmax(150px, 1fr));
-        gap: 10px;
-        margin-bottom: 12px;
-      }
-
-      input,
-      select,
       button {
         min-height: 38px;
         border: 1px solid var(--line);
@@ -80,12 +98,6 @@
         background: var(--panel);
         color: var(--text);
         font: inherit;
-      }
-
-      input,
-      select {
-        width: 100%;
-        padding: 0 10px;
       }
 
       button {
@@ -106,26 +118,6 @@
         gap: 12px;
         margin: 10px 0 14px;
         color: var(--muted);
-      }
-
-      .columns {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-bottom: 14px;
-      }
-
-      .columns label {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        min-height: 30px;
-        padding: 4px 8px;
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        background: var(--panel);
-        color: var(--muted);
-        white-space: nowrap;
       }
 
       .table-wrap {
@@ -193,12 +185,6 @@
         color: var(--muted);
       }
 
-      @media (max-width: 940px) {
-        .toolbar {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
       @media (max-width: 640px) {
         .wrap {
           width: min(100% - 20px, 1440px);
@@ -210,9 +196,6 @@
           flex-direction: column;
         }
 
-        .toolbar {
-          grid-template-columns: 1fr;
-        }
       }
     </style>
   </head>
@@ -220,25 +203,21 @@
     <header>
       <div class="wrap topbar">
         <h1>ip-catalog</h1>
-        <a class="repo-link" href="https://github.com/openecos-projects/ip-catalog">GitHub</a>
+        <div class="header-actions">
+          <div class="lang-toggle" aria-label="Language">
+            <button id="langZh" type="button" class="active">中文</button>
+            <button id="langEn" type="button">EN</button>
+          </div>
+          <a class="repo-link" href="https://github.com/openecos-projects/ip-catalog">GitHub</a>
+        </div>
       </div>
     </header>
 
     <main class="wrap">
-      <section class="toolbar" aria-label="Filters">
-        <input id="search" type="search" placeholder="Search UID, name, family, source, features">
-        <select id="category"></select>
-        <select id="family"></select>
-        <select id="status"></select>
-        <select id="licenseRisk"></select>
-      </section>
-
       <section class="summary">
-        <div id="count">Loading records...</div>
-        <div class="muted">Data source: <code>generated/index.json</code></div>
+        <div id="count"></div>
+        <div class="muted" id="dataSource"></div>
       </section>
-
-      <section class="columns" id="columns" aria-label="Visible columns"></section>
 
       <section class="table-wrap" id="tableWrap"></section>
     </main>
@@ -246,116 +225,77 @@
     <script>
       const DATA_URL = "generated/index.json";
 
+      const i18n = {
+        zh: {
+          loading: "正在加载记录...",
+          dataSource: "数据源：",
+          records: (total) => `${total} 条记录`,
+          empty: "没有匹配的 IP 记录。",
+          loadError: "无法加载 catalog 数据。",
+          unknown: "未知",
+          open: "打开",
+          columns: {
+            display_name: "名称",
+            ip_repository: "IP 仓库",
+            ip_family: "功能族",
+            category: "分类",
+            status: "状态",
+            maturity: "成熟度",
+            interfaces: "接口",
+            summary: "摘要",
+          },
+        },
+        en: {
+          loading: "Loading records...",
+          dataSource: "Data source:",
+          records: (total) => `${total} records`,
+          empty: "No matching IP records.",
+          loadError: "Unable to load catalog data.",
+          unknown: "unknown",
+          open: "Open",
+          columns: {
+            display_name: "Name",
+            ip_repository: "IP Repo",
+            ip_family: "Family",
+            category: "Category",
+            status: "Status",
+            maturity: "Maturity",
+            interfaces: "Interfaces",
+            summary: "Summary",
+          },
+        },
+      };
+
       const columns = [
-        { key: "uid", label: "UID", required: true },
-        { key: "display_name", label: "Name", required: true },
-        { key: "ip_repository", label: "IP Repo" },
-        { key: "ip_family", label: "Family" },
-        { key: "category", label: "Category" },
-        { key: "status", label: "Status" },
-        { key: "license", label: "License" },
-        { key: "license_risk", label: "License Risk" },
-        { key: "maturity", label: "Maturity" },
-        { key: "upstream_owner", label: "Source" },
-        { key: "interfaces", label: "Interfaces" },
-        { key: "features", label: "Features" },
-        { key: "compatibility", label: "Compatibility" },
-        { key: "summary", label: "Summary" },
-        { key: "next_action", label: "Next Action" },
+        { key: "display_name" },
+        { key: "ip_repository" },
+        { key: "ip_family" },
+        { key: "category" },
+        { key: "status" },
+        { key: "maturity" },
+        { key: "interfaces" },
+        { key: "summary" },
       ];
 
-      const defaultVisible = new Set([
-        "uid",
-        "display_name",
-        "ip_family",
-        "category",
-        "status",
-        "license",
-        "maturity",
-        "upstream_owner",
-        "ip_repository",
-      ]);
-
       let records = [];
-      let visible = new Set(defaultVisible);
+      let lang = "zh";
 
       const els = {
-        search: document.querySelector("#search"),
-        category: document.querySelector("#category"),
-        family: document.querySelector("#family"),
-        status: document.querySelector("#status"),
-        licenseRisk: document.querySelector("#licenseRisk"),
         count: document.querySelector("#count"),
-        columns: document.querySelector("#columns"),
+        dataSource: document.querySelector("#dataSource"),
         tableWrap: document.querySelector("#tableWrap"),
+        langZh: document.querySelector("#langZh"),
+        langEn: document.querySelector("#langEn"),
       };
+
+      function t() {
+        return i18n[lang];
+      }
 
       function asText(value) {
         if (Array.isArray(value)) return value.join(", ");
-        if (value === null || value === undefined || value === "") return "unknown";
+        if (value === null || value === undefined || value === "") return t().unknown;
         return String(value);
-      }
-
-      function optionsFor(key) {
-        return [...new Set(records.map((item) => asText(item[key])).filter(Boolean))].sort();
-      }
-
-      function fillSelect(select, label, values) {
-        select.innerHTML = "";
-        const all = document.createElement("option");
-        all.value = "";
-        all.textContent = `All ${label}`;
-        select.appendChild(all);
-        values.forEach((value) => {
-          const option = document.createElement("option");
-          option.value = value;
-          option.textContent = value;
-          select.appendChild(option);
-        });
-      }
-
-      function renderColumnControls() {
-        els.columns.innerHTML = "";
-        columns.forEach((column) => {
-          const label = document.createElement("label");
-          const checkbox = document.createElement("input");
-          checkbox.type = "checkbox";
-          checkbox.checked = visible.has(column.key);
-          checkbox.disabled = column.required;
-          checkbox.addEventListener("change", () => {
-            if (checkbox.checked) visible.add(column.key);
-            else visible.delete(column.key);
-            render();
-          });
-          label.append(checkbox, document.createTextNode(column.label));
-          els.columns.appendChild(label);
-        });
-      }
-
-      function matches(record) {
-        const query = els.search.value.trim().toLowerCase();
-        const searchable = [
-          record.uid,
-          record.display_name,
-          record.slug,
-          record.ip_family,
-          record.category,
-          record.upstream_owner,
-          record.summary,
-          ...(record.features || []),
-          ...(record.interfaces || []),
-          ...(record.compatibility || []),
-        ]
-          .join(" ")
-          .toLowerCase();
-
-        return (
-          (!query || searchable.includes(query)) &&
-          (!els.category.value || asText(record.category) === els.category.value) &&
-          (!els.family.value || asText(record.ip_family) === els.family.value) &&
-          (!els.status.value || asText(record.status) === els.status.value) &&
-          (!els.licenseRisk.value || asText(record.license_risk) === els.licenseRisk.value)
-        );
       }
 
       function cellContent(record, column) {
@@ -376,12 +316,12 @@
           if (!record.ip_repository) return document.createTextNode("unknown");
           const link = document.createElement("a");
           link.href = record.ip_repository;
-          link.textContent = "Open";
+          link.textContent = t().open;
           link.target = "_blank";
           link.rel = "noopener noreferrer";
           return link;
         }
-        if (column.key === "status" || column.key === "license_risk") {
+        if (column.key === "status") {
           const span = document.createElement("span");
           span.className = `pill ${asText(value).includes("high") || asText(value).includes("medium") ? "warn" : ""}`;
           span.textContent = asText(value);
@@ -391,30 +331,32 @@
       }
 
       function render() {
-        const filtered = records.filter(matches);
-        els.count.textContent = `${filtered.length} of ${records.length} records`;
+        els.count.textContent = t().records(records.length);
+        els.dataSource.innerHTML = `${t().dataSource} <code>generated/index.json</code>`;
+        document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+        els.langZh.classList.toggle("active", lang === "zh");
+        els.langEn.classList.toggle("active", lang === "en");
 
-        if (!filtered.length) {
-          els.tableWrap.innerHTML = '<div class="empty">No matching IP records.</div>';
+        if (!records.length) {
+          els.tableWrap.innerHTML = `<div class="empty">${t().empty}</div>`;
           return;
         }
 
-        const activeColumns = columns.filter((column) => visible.has(column.key));
         const table = document.createElement("table");
         const thead = document.createElement("thead");
         const headerRow = document.createElement("tr");
-        activeColumns.forEach((column) => {
+        columns.forEach((column) => {
           const th = document.createElement("th");
-          th.textContent = column.label;
+          th.textContent = t().columns[column.key];
           headerRow.appendChild(th);
         });
         thead.appendChild(headerRow);
         table.appendChild(thead);
 
         const tbody = document.createElement("tbody");
-        filtered.forEach((record) => {
+        records.forEach((record) => {
           const row = document.createElement("tr");
-          activeColumns.forEach((column) => {
+          columns.forEach((column) => {
             const td = document.createElement("td");
             td.appendChild(cellContent(record, column));
             row.appendChild(td);
@@ -432,24 +374,20 @@
         if (!response.ok) throw new Error(`Failed to load ${DATA_URL}`);
         const payload = await response.json();
         records = payload.records || [];
+        els.langZh.addEventListener("click", () => setLanguage("zh"));
+        els.langEn.addEventListener("click", () => setLanguage("en"));
 
-        fillSelect(els.category, "categories", optionsFor("category"));
-        fillSelect(els.family, "families", optionsFor("ip_family"));
-        fillSelect(els.status, "statuses", optionsFor("status"));
-        fillSelect(els.licenseRisk, "license risks", optionsFor("license_risk"));
-        renderColumnControls();
+        render();
+      }
 
-        [els.search, els.category, els.family, els.status, els.licenseRisk].forEach((el) => {
-          el.addEventListener("input", render);
-          el.addEventListener("change", render);
-        });
-
+      function setLanguage(nextLang) {
+        lang = nextLang;
         render();
       }
 
       init().catch((error) => {
         els.count.textContent = error.message;
-        els.tableWrap.innerHTML = '<div class="empty">Unable to load catalog data.</div>';
+        els.tableWrap.innerHTML = `<div class="empty">${t().loadError}</div>`;
       });
     </script>
   </body>
