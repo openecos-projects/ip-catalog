@@ -1,103 +1,140 @@
 uid: ip-000000
 repo_name: ip-000000
+catalog:
+  repository: git@github.com:openecos-projects/ip-catalog.git
+  path: data/ip/peripheral/ip-000000.yaml
+
 slug: uart
 display_name: SYS_UART
-summary: Universal asynchronous receiver-transmitter IP candidate.
+summary: UART 16550-compatible serial controller with an APB-style wrapper.
 
 category: peripheral
 subcategories:
   - uart
   - serial
 ip_family: uart
-implementation_style: unknown
-compatibility: []
-register_model: unknown
-features: []
-integration_profile: []
-resource_profile: unknown
-performance_profile: unknown
-best_for: []
-not_recommended_for: []
+implementation_style: rtl
+compatibility:
+  - NS16550-compatible register model
+register_model: 16550-like
+features:
+  - transmit FIFO
+  - receive FIFO
+  - programmable divisor latch
+  - line control register
+  - interrupt identification and enable registers
+  - modem control/status register subset
+  - APB-style wrapper
+integration_profile:
+  - memory-mapped peripheral
+  - APB-style slave
+resource_profile: small
+performance_profile: baud-rate-divider limited
+best_for:
+  - RISC-V SoC serial console
+  - FPGA teaching SoC peripheral
+not_recommended_for:
+  - designs requiring a pinned upstream release without extra provenance work
 
 links:
   catalog_repository: https://github.com/openecos-projects/ip-000000
-  homepage: null
-  repository: null
-  documentation: null
+  homepage: https://opencores.org/projects/uart16550
+  repository: https://github.com/freecores/uart16550
+  documentation: https://opencores.org/projects/uart16550
 
 upstream:
-  owner: unknown
-  status: unknown
-  default_branch: null
+  owner: OpenCores / FreeCores
+  status: mirrored-with-local-wrapper
+  default_branch: master
   latest_release: null
   latest_commit: null
   latest_commit_at: null
 
 tracking:
-  current_ref: null
-  current_ref_type: null
-  baseline_ref: null
-  baseline_reviewed_at: null
+  current_ref: local-source-drop
+  current_ref_type: mirror
+  baseline_ref: unknown
+  baseline_reviewed_at: 2026-06-09
   update_policy: manual
 
-versions: []
+versions: [1.0.0]
 
 technical:
-  languages: []
+  languages:
+    - Verilog
   interfaces:
+    - APB-style
     - UART
-  bus_compatibility: []
-  clock_domains: unknown
-  reset_scheme: unknown
-  parameterizable: unknown
-  parameters: []
+  bus_compatibility:
+    - APB-style 32-bit register access wrapper
+  clock_domains: single APB/system clock plus asynchronous serial RX input
+  reset_scheme: active-low wrapper reset converted to active-high internal reset
+  parameterizable: partial
+  parameters:
+    - name: UART_HAS_BAUDRATE_OUTPUT
+      type: Verilog define
+      default: disabled
+      description: Enables optional 16x baud-rate output inside the UART core.
+    - name: DATA_BUS_WIDTH_8
+      type: Verilog define
+      default: enabled
+      description: Selects the 8-bit internal UART register data bus configuration.
   target_process: process-independent
-  fpga_support: unknown
+  fpga_support: likely
   asic_support: unknown
   toolchains: []
   dependencies: []
   deliverables:
-    rtl: unknown
-    testbench: unknown
-    docs: unknown
-    constraints: unknown
+    rtl: present
+    testbench: absent
+    docs: basic
+    constraints: absent
 
 quality:
   maturity: experimental
   verification:
     simulation: unknown
     formal: unknown
-    uvm: unknown
+    uvm: absent
     fpga: unknown
     silicon: unknown
-  ci_status: unknown
+  ci_status: absent
   known_users: []
   silicon_proven: unknown
   fpga_proven: unknown
-  documentation_quality: unknown
-  integration_difficulty: unknown
-  known_issues: []
+  documentation_quality: basic
+  integration_difficulty: medium
+  known_issues:
+    - Upstream commit for the mirrored RTL source drop is not pinned.
+    - No local simulation, lint, synthesis, or formal reports are present.
+    - APB wrapper comments label uart_rx/uart_tx directions inconsistently with signal names.
 
 legal:
-  license: unknown
-  license_file_present: unknown
-  license_risk: high
-  patent_grant: unknown
+  license: LGPL-2.1-or-later
+  license_file_present: true
+  license_risk: medium
+  patent_grant: implicit
   export_control_note: null
-  commercial_use_allowed: unknown
-  third_party_components: []
+  commercial_use_allowed: true
+  third_party_components:
+    - name: OpenCores UART 16550 compatible
+      source: https://opencores.org/projects/uart16550
+      license: LGPL-2.1-or-later
+      usage: rtl-core
 
 internal:
   status: candidate
   review_owner: null
-  review_notes: null
+  review_notes: docs/reviews/ip-000000.md
   integration_notes:
-    - Upstream implementation has not been selected yet.
-  local_patches: []
+    - APB wrapper is included locally and instantiates the 8-bit UART register core.
+    - RTL include paths assume `rtl` is on the Verilog include search path.
+  local_patches:
+    - APB wrapper added as rtl/uart_apb.v
   used_versions: []
   used_in_projects: []
   rejection_reason: null
-  next_action: select-upstream-implementation
+  next_action: pin-upstream-baseline-and-run-basic-lint-simulation
 
 metadata:
   first_seen_at: 2026-06-09
