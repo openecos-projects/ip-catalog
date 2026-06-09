@@ -31,6 +31,7 @@ data/ip/<category>/<uid>.yaml
 schemas/
 scripts/
 generated/
+site/
 ```
 
 ## IP Record Path
@@ -124,16 +125,17 @@ The child repository must keep the same `uid` as the catalog record.
 
 ## Index Generation
 
-After adding or editing IP records, regenerate the Markdown index:
+After adding or editing IP records, regenerate the generated indexes:
 
 ```bash
 python3 scripts/generate-index.py
 ```
 
-Generated output:
+Generated outputs:
 
 ```text
 generated/index.md
+generated/index.json
 ```
 
 ## Current First IP

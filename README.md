@@ -33,18 +33,18 @@ ip-catalog/
 
 ## Data Model
 
-Each IP is stored as one YAML file:
+Each IP is stored as one YAML file named by its stable UID:
 
 ```text
-data/ip/<category>/<ip-id>.yaml
+data/ip/<category>/<uid>.yaml
 ```
 
 Examples:
 
 ```text
-data/ip/peripheral/uart-16550-opencores.yaml
-data/ip/processor/riscv-core-ibex.yaml
-data/ip/interconnect/axi-pulp.yaml
+data/ip/peripheral/ip-000000.yaml
+data/ip/processor/ip-000001.yaml
+data/ip/interconnect/ip-000002.yaml
 ```
 
 This repository stores metadata and review information. It does not vendor the full upstream RTL source code.
@@ -59,6 +59,7 @@ The project is currently implementing P0/P1:
 See:
 
 - [AI repository guide](AI_REPOSITORY_GUIDE.md)
+- [Web catalog](site/index.html)
 - [IP index](generated/index.md)
 - [Database plan](docs/ip-database-plan.md)
 - [Implementation roadmap](docs/implementation-roadmap.md)
