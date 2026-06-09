@@ -1,6 +1,6 @@
 {
   "generated_from": "data/ip/**/*.yaml",
-  "total": 5,
+  "total": 11,
   "records": [
     {
       "uid": "ip-000000",
@@ -8,6 +8,7 @@
       "slug": "uart",
       "display_name": "SYS_UART",
       "summary": "Silicon-validated UART 16550-compatible serial controller with an APB-style wrapper.",
+      "summary_zh": "面向 SoC 串口控制台的 UART 16550 兼容控制器，带本地 APB 风格封装，支持收发 FIFO、可编程波特率分频和基础中断/线路控制寄存器；当前代码来自 2025-06-27 流片工程并已完成硅验证。",
       "category": "peripheral",
       "subcategories": [
         "uart",
@@ -80,6 +81,7 @@
       "slug": "uart-retrosoc-apb4",
       "display_name": "APB4 UART Controller",
       "summary": "APB4-based UART controller with configurable serial format, TX/RX FIFOs, programmable baud divider, and maskable interrupts.",
+      "summary_zh": "基于 APB4 总线的 UART 控制器，支持可配置数据位、停止位、校验位、可编程波特率分频、独立收发 FIFO 和可屏蔽中断；当前代码为 20250627 流片工程快照，并记录为已硅验证候选 IP。",
       "category": "peripheral",
       "subcategories": [
         "uart"
@@ -152,6 +154,7 @@
       "slug": "archinfo-apb4",
       "display_name": "APB4 Architecture Info Register Block",
       "summary": "APB4-accessible architecture information register block for SoC, process, vendor, and tapeout date metadata.",
+      "summary_zh": "通过 APB4 访问的架构信息寄存器模块，用于记录 SoC 时钟/SRAM 配置、流片类型、厂商、工艺、用户标识和流片日期等元数据；当前代码来自 20250627 流片工程快照。",
       "category": "peripheral",
       "subcategories": [
         "system-info",
@@ -224,6 +227,7 @@
       "slug": "i2c-apb4-master",
       "display_name": "APB4 I2C Master Controller",
       "summary": "APB4-based single-master I2C controller with programmable prescaler, 7-bit addressing, and maskable transfer interrupt.",
+      "summary_zh": "基于 APB4 总线的单主 I2C 控制器，兼容 Philips I2C 标准，支持可编程预分频、7 位寻址、100K/400K/1Mbps 速率场景以及可屏蔽传输中断；当前代码来自 20250627 流片工程快照。",
       "category": "peripheral",
       "subcategories": [
         "i2c",
@@ -301,6 +305,7 @@
       "slug": "gpio-apb4",
       "display_name": "APB4 GPIO Controller",
       "summary": "APB4-based 32-channel GPIO controller with direction control, alternate-function muxing, and configurable input interrupts.",
+      "summary_zh": "基于 APB4 总线的 32 路 GPIO 控制器，支持输入/输出方向配置、软件与复用功能输出选择、可屏蔽输入中断，以及高/低电平和上升/下降沿触发模式；当前代码来自 20250627 流片工程快照。",
       "category": "peripheral",
       "subcategories": [
         "gpio"
@@ -367,6 +372,435 @@
       "data_quality": "partial",
       "last_reviewed_at": "2026-06-09",
       "path": "data/ip/peripheral/ip-000004.yaml"
+    },
+    {
+      "uid": "ip-000005",
+      "repo_name": "ip-000005",
+      "slug": "spi-apb4-master",
+      "display_name": "APB4 SPI Master Controller",
+      "summary": "APB4-based SPI master controller with programmable prescaler, standard/dual/quad modes, FIFOs, chip select control, and maskable interrupts.",
+      "summary_zh": "基于 APB4 总线的 SPI 主控制器，兼容 Motorola SPI 标准，支持标准/双线/四线模式、可编程分频、片选控制、独立收发 FIFO、可配置帧格式和可屏蔽收发中断；当前代码来自 20250627 流片工程快照。",
+      "category": "peripheral",
+      "subcategories": [
+        "spi",
+        "serial"
+      ],
+      "ip_family": "spi",
+      "implementation_style": "standard-compatible",
+      "compatibility": [
+        "amba-apb"
+      ],
+      "features": [
+        "spi-master",
+        "standard-dual-quad-spi",
+        "programmable-prescaler",
+        "tx-rx-fifo",
+        "maskable-interrupt"
+      ],
+      "integration_profile": [
+        "memory-mapped-peripheral"
+      ],
+      "resource_profile": "small",
+      "performance_profile": "register-programmable",
+      "best_for": [
+        "small-mcu",
+        "fpga-demo",
+        "education"
+      ],
+      "not_recommended_for": [
+        "production-asic-without-license-review"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/ip-000005",
+      "ip_repository": "https://github.com/openecos-projects/ip-000005",
+      "upstream_repository": "https://github.com/oscc-ip/spi",
+      "homepage": "https://github.com/oscc-ip/spi",
+      "documentation": "https://github.com/oscc-ip/spi/blob/main/doc/datasheet.md",
+      "upstream_owner": "oscc-ip",
+      "upstream_status": "active",
+      "current_ref": "source-snapshot-20250627",
+      "current_ref_type": "snapshot",
+      "languages": [
+        "SystemVerilog",
+        "C"
+      ],
+      "interfaces": [
+        "apb",
+        "interrupt"
+      ],
+      "bus_compatibility": [
+        "apb4"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "proven-through-20250627-project",
+      "maturity": "silicon-proven",
+      "documentation_quality": "basic",
+      "integration_difficulty": "medium",
+      "license": "MulanPSL-2.0 AND SHL-0.51",
+      "license_risk": "medium",
+      "commercial_use_allowed": "unknown",
+      "status": "candidate",
+      "next_action": "Attach tapeout validation evidence and run a reproducible simulation/lint baseline.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-09",
+      "path": "data/ip/peripheral/ip-000005.yaml"
+    },
+    {
+      "uid": "ip-000006",
+      "repo_name": "ip-000006",
+      "slug": "timer-apb4",
+      "display_name": "APB4 Timer Controller",
+      "summary": "APB4-based programmable timer with prescaler, 32-bit counter and compare register, auto reload, capture mode, and overflow interrupt.",
+      "summary_zh": "基于 APB4 总线的可编程定时器，支持可在线修改的预分频、32 位计数/比较寄存器、自动重载、内外部时钟源、向上/向下计数、输入捕获和可屏蔽溢出中断；当前代码来自 20250627 流片工程快照。",
+      "category": "peripheral",
+      "subcategories": [
+        "timer",
+        "timer"
+      ],
+      "ip_family": "timer",
+      "implementation_style": "standard-compatible",
+      "compatibility": [
+        "amba-apb"
+      ],
+      "features": [
+        "programmable-prescaler",
+        "32-bit-counter",
+        "auto-reload",
+        "input-capture",
+        "overflow-interrupt"
+      ],
+      "integration_profile": [
+        "memory-mapped-peripheral"
+      ],
+      "resource_profile": "small",
+      "performance_profile": "register-programmable",
+      "best_for": [
+        "small-mcu",
+        "fpga-demo",
+        "education"
+      ],
+      "not_recommended_for": [
+        "production-asic-without-license-review"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/ip-000006",
+      "ip_repository": "https://github.com/openecos-projects/ip-000006",
+      "upstream_repository": "https://github.com/oscc-ip/timer",
+      "homepage": "https://github.com/oscc-ip/timer",
+      "documentation": "https://github.com/oscc-ip/timer/blob/main/doc/datasheet.md",
+      "upstream_owner": "oscc-ip",
+      "upstream_status": "active",
+      "current_ref": "source-snapshot-20250627",
+      "current_ref_type": "snapshot",
+      "languages": [
+        "SystemVerilog",
+        "C"
+      ],
+      "interfaces": [
+        "apb",
+        "interrupt"
+      ],
+      "bus_compatibility": [
+        "apb4"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "proven-through-20250627-project",
+      "maturity": "silicon-proven",
+      "documentation_quality": "basic",
+      "integration_difficulty": "medium",
+      "license": "MulanPSL-2.0 AND SHL-0.51",
+      "license_risk": "medium",
+      "commercial_use_allowed": "unknown",
+      "status": "candidate",
+      "next_action": "Attach tapeout validation evidence and run a reproducible simulation/lint baseline.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-09",
+      "path": "data/ip/peripheral/ip-000006.yaml"
+    },
+    {
+      "uid": "ip-000007",
+      "repo_name": "ip-000007",
+      "slug": "rng-apb4",
+      "display_name": "APB4 Random Number Generator",
+      "summary": "APB4-based pseudo-random number generator using a 32-bit LFSR with programmable seed and one random word per cycle.",
+      "summary_zh": "基于 APB4 总线的伪随机数发生器，内部使用 32 位最大序列 LFSR，支持可编程种子寄存器，并可每周期产生一个 32 位随机数；当前代码来自 20250627 流片工程快照。",
+      "category": "peripheral",
+      "subcategories": [
+        "rng",
+        "random"
+      ],
+      "ip_family": "rng",
+      "implementation_style": "standard-compatible",
+      "compatibility": [
+        "amba-apb"
+      ],
+      "features": [
+        "32-bit-lfsr",
+        "programmable-seed",
+        "one-word-per-cycle",
+        "apb4-register-access"
+      ],
+      "integration_profile": [
+        "memory-mapped-peripheral"
+      ],
+      "resource_profile": "small",
+      "performance_profile": "register-programmable",
+      "best_for": [
+        "small-mcu",
+        "fpga-demo",
+        "education"
+      ],
+      "not_recommended_for": [
+        "production-asic-without-license-review"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/ip-000007",
+      "ip_repository": "https://github.com/openecos-projects/ip-000007",
+      "upstream_repository": "https://github.com/oscc-ip/rng",
+      "homepage": "https://github.com/oscc-ip/rng",
+      "documentation": "https://github.com/oscc-ip/rng/blob/main/doc/datasheet.md",
+      "upstream_owner": "oscc-ip",
+      "upstream_status": "active",
+      "current_ref": "source-snapshot-20250627",
+      "current_ref_type": "snapshot",
+      "languages": [
+        "SystemVerilog",
+        "C"
+      ],
+      "interfaces": [
+        "apb",
+        "interrupt"
+      ],
+      "bus_compatibility": [
+        "apb4"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "proven-through-20250627-project",
+      "maturity": "silicon-proven",
+      "documentation_quality": "basic",
+      "integration_difficulty": "medium",
+      "license": "MulanPSL-2.0 AND SHL-0.51",
+      "license_risk": "medium",
+      "commercial_use_allowed": "unknown",
+      "status": "candidate",
+      "next_action": "Attach tapeout validation evidence and run a reproducible simulation/lint baseline.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-09",
+      "path": "data/ip/peripheral/ip-000007.yaml"
+    },
+    {
+      "uid": "ip-000008",
+      "repo_name": "ip-000008",
+      "slug": "pwm-apb4",
+      "display_name": "APB4 PWM Controller",
+      "summary": "APB4-based four-channel edge-aligned PWM controller with programmable prescaler, 16-bit counter, compare registers, auto reload, and overflow interrupt.",
+      "summary_zh": "基于 APB4 总线的四通道边沿对齐 PWM 控制器，支持可在线修改的预分频、16 位向上计数器、比较寄存器、自动重载和可屏蔽溢出中断；当前代码来自 20250627 流片工程快照。",
+      "category": "peripheral",
+      "subcategories": [
+        "pwm",
+        "timer"
+      ],
+      "ip_family": "pwm",
+      "implementation_style": "standard-compatible",
+      "compatibility": [
+        "amba-apb"
+      ],
+      "features": [
+        "four-channel-pwm",
+        "edge-aligned",
+        "programmable-prescaler",
+        "16-bit-counter",
+        "overflow-interrupt"
+      ],
+      "integration_profile": [
+        "memory-mapped-peripheral"
+      ],
+      "resource_profile": "small",
+      "performance_profile": "register-programmable",
+      "best_for": [
+        "small-mcu",
+        "fpga-demo",
+        "education"
+      ],
+      "not_recommended_for": [
+        "production-asic-without-license-review"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/ip-000008",
+      "ip_repository": "https://github.com/openecos-projects/ip-000008",
+      "upstream_repository": "https://github.com/oscc-ip/pwm",
+      "homepage": "https://github.com/oscc-ip/pwm",
+      "documentation": "https://github.com/oscc-ip/pwm/blob/main/doc/datasheet.md",
+      "upstream_owner": "oscc-ip",
+      "upstream_status": "active",
+      "current_ref": "source-snapshot-20250627",
+      "current_ref_type": "snapshot",
+      "languages": [
+        "SystemVerilog",
+        "C"
+      ],
+      "interfaces": [
+        "apb",
+        "interrupt"
+      ],
+      "bus_compatibility": [
+        "apb4"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "proven-through-20250627-project",
+      "maturity": "silicon-proven",
+      "documentation_quality": "basic",
+      "integration_difficulty": "medium",
+      "license": "MulanPSL-2.0 AND SHL-0.51",
+      "license_risk": "medium",
+      "commercial_use_allowed": "unknown",
+      "status": "candidate",
+      "next_action": "Attach tapeout validation evidence and run a reproducible simulation/lint baseline.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-09",
+      "path": "data/ip/peripheral/ip-000008.yaml"
+    },
+    {
+      "uid": "ip-000009",
+      "repo_name": "ip-000009",
+      "slug": "ps2-apb4-keyboard",
+      "display_name": "APB4 PS/2 Keyboard Controller",
+      "summary": "APB4-based PS/2 keyboard controller with configurable receive FIFO depth and maskable FIFO-not-empty interrupt.",
+      "summary_zh": "基于 APB4 总线的 PS/2 键盘控制器，支持 PS/2 键盘接收、可配置接收 FIFO 深度和可屏蔽 FIFO 非空中断，并提供键盘测试模型；当前代码来自 20250627 流片工程快照。",
+      "category": "peripheral",
+      "subcategories": [
+        "ps2",
+        "keyboard"
+      ],
+      "ip_family": "ps2",
+      "implementation_style": "standard-compatible",
+      "compatibility": [
+        "amba-apb"
+      ],
+      "features": [
+        "ps2-keyboard",
+        "configurable-rx-fifo",
+        "fifo-not-empty-interrupt",
+        "keyboard-test-model"
+      ],
+      "integration_profile": [
+        "memory-mapped-peripheral"
+      ],
+      "resource_profile": "small",
+      "performance_profile": "register-programmable",
+      "best_for": [
+        "small-mcu",
+        "fpga-demo",
+        "education"
+      ],
+      "not_recommended_for": [
+        "production-asic-without-license-review"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/ip-000009",
+      "ip_repository": "https://github.com/openecos-projects/ip-000009",
+      "upstream_repository": "https://github.com/oscc-ip/ps2",
+      "homepage": "https://github.com/oscc-ip/ps2",
+      "documentation": "https://github.com/oscc-ip/ps2/blob/main/doc/datasheet.md",
+      "upstream_owner": "oscc-ip",
+      "upstream_status": "active",
+      "current_ref": "source-snapshot-20250627",
+      "current_ref_type": "snapshot",
+      "languages": [
+        "SystemVerilog",
+        "C"
+      ],
+      "interfaces": [
+        "apb",
+        "interrupt"
+      ],
+      "bus_compatibility": [
+        "apb4"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "proven-through-20250627-project",
+      "maturity": "silicon-proven",
+      "documentation_quality": "basic",
+      "integration_difficulty": "medium",
+      "license": "MulanPSL-2.0 AND SHL-0.51",
+      "license_risk": "medium",
+      "commercial_use_allowed": "unknown",
+      "status": "candidate",
+      "next_action": "Attach tapeout validation evidence and run a reproducible simulation/lint baseline.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-09",
+      "path": "data/ip/peripheral/ip-000009.yaml"
+    },
+    {
+      "uid": "ip-000010",
+      "repo_name": "ip-000010",
+      "slug": "psram-axi4",
+      "display_name": "AXI4 PSRAM Controller",
+      "summary": "AXI4-based PSRAM controller for serial RAM devices with programmable prescaler and SPI/QPI/OPI-oriented PSRAM core support.",
+      "summary_zh": "基于 AXI4 总线的 PSRAM 控制器，面向串行 RAM 设备，包含 AXI4 从端 FSM、PSRAM 核心控制逻辑、可编程分频以及 SPI/QPI/OPI 模式相关接口支持；当前代码来自 20250627 流片工程快照。",
+      "category": "peripheral",
+      "subcategories": [
+        "psram",
+        "memory-controller"
+      ],
+      "ip_family": "psram",
+      "implementation_style": "standard-compatible",
+      "compatibility": [
+        "amba-apb"
+      ],
+      "features": [
+        "axi4-slave",
+        "serial-psram",
+        "programmable-prescaler",
+        "spi-qpi-opi-oriented-core"
+      ],
+      "integration_profile": [
+        "memory-mapped-peripheral"
+      ],
+      "resource_profile": "small",
+      "performance_profile": "register-programmable",
+      "best_for": [
+        "small-mcu",
+        "fpga-demo",
+        "education"
+      ],
+      "not_recommended_for": [
+        "production-asic-without-license-review"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/ip-000010",
+      "ip_repository": "https://github.com/openecos-projects/ip-000010",
+      "upstream_repository": "https://github.com/oscc-ip/psram",
+      "homepage": "https://github.com/oscc-ip/psram",
+      "documentation": "https://github.com/oscc-ip/psram/blob/main/doc/datasheet.md",
+      "upstream_owner": "oscc-ip",
+      "upstream_status": "active",
+      "current_ref": "source-snapshot-20250627",
+      "current_ref_type": "snapshot",
+      "languages": [
+        "SystemVerilog",
+        "C"
+      ],
+      "interfaces": [
+        "apb",
+        "interrupt"
+      ],
+      "bus_compatibility": [
+        "apb4"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "proven-through-20250627-project",
+      "maturity": "silicon-proven",
+      "documentation_quality": "basic",
+      "integration_difficulty": "medium",
+      "license": "MulanPSL-2.0 AND SHL-0.51",
+      "license_risk": "medium",
+      "commercial_use_allowed": "unknown",
+      "status": "candidate",
+      "next_action": "Attach tapeout validation evidence and run a reproducible simulation/lint baseline.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-09",
+      "path": "data/ip/peripheral/ip-000010.yaml"
     }
   ]
 }

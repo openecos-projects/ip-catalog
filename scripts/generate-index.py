@@ -71,6 +71,7 @@ def compact_record(record: dict[str, Any]) -> dict[str, Any]:
         "slug": record.get("slug", ""),
         "display_name": record.get("display_name") or record.get("name", ""),
         "summary": record.get("summary", ""),
+        "summary_zh": record.get("summary_zh", ""),
         "category": record.get("category", ""),
         "subcategories": record.get("subcategories", []),
         "ip_family": record.get("ip_family", ""),

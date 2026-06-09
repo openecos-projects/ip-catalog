@@ -1,0 +1,128 @@
+uid: ip-000009
+repo_name: ip-000009
+slug: ps2-apb4-keyboard
+display_name: APB4 PS/2 Keyboard Controller
+summary: APB4-based PS/2 keyboard controller with configurable receive FIFO depth and maskable FIFO-not-empty interrupt.
+summary_zh: 基于 APB4 总线的 PS/2 键盘控制器，支持 PS/2 键盘接收、可配置接收 FIFO 深度和可屏蔽 FIFO 非空中断，并提供键盘测试模型；当前代码来自 20250627 流片工程快照。
+category: peripheral
+subcategories:
+  - ps2
+  - keyboard
+ip_family: ps2
+implementation_style: standard-compatible
+compatibility:
+  - amba-apb
+features:
+  - ps2-keyboard
+  - configurable-rx-fifo
+  - fifo-not-empty-interrupt
+  - keyboard-test-model
+integration_profile:
+  - memory-mapped-peripheral
+resource_profile: small
+performance_profile: register-programmable
+best_for:
+  - small-mcu
+  - fpga-demo
+  - education
+not_recommended_for:
+  - production-asic-without-license-review
+catalog:
+  repository: git@github.com:openecos-projects/ip-catalog.git
+  path: data/ip/peripheral/ip-000009.yaml
+links:
+  catalog_repository: https://github.com/openecos-projects/ip-000009
+  repository: https://github.com/oscc-ip/ps2
+  homepage: https://github.com/oscc-ip/ps2
+  documentation: https://github.com/oscc-ip/ps2/blob/main/doc/datasheet.md
+upstream:
+  owner: oscc-ip
+  repository: https://github.com/oscc-ip/ps2
+  author: Beijing Institute of Open Source Chip
+  contributors: []
+  status: active
+  default_branch: main
+  ref: main
+  ref_type: branch
+  commit: c9f09af9ab36310c828d6235d81bf95c9afc8c8d
+  sync_policy: none
+tracking:
+  current_ref: source-snapshot-20250627
+  current_ref_type: snapshot
+  baseline_ref: source-snapshot-20250627
+  baseline_reviewed_at: 2026-06-09
+  update_policy: manual
+  provenance:
+    source_project: 20250627 tapeout project
+    source_snapshot: 20250627
+    silicon_validated: true
+    upstream_observed_commit: c9f09af9ab36310c828d6235d81bf95c9afc8c8d
+versions:
+  - version: 1.0.0
+    ref: source-snapshot-20250627
+    date: 2025-06-27
+    status: silicon-validated
+    notes: Current RTL source drop comes from the 20250627 tapeout project code.
+technical:
+  languages:
+    - SystemVerilog
+    - C
+  interfaces:
+    - apb
+    - interrupt
+  bus_compatibility:
+    - apb4
+  dependencies:
+    - local common RTL modules under rtl/
+  top_modules:
+    - apb4_ps2
+  clock_domains: single APB/system clock plus peripheral-specific external pins
+  reset_scheme: active-low reset
+  parameterizable: limited
+  target_process: generic
+  fpga_support: unknown
+  asic_support: proven-through-20250627-project
+  toolchains:
+    - vcs
+legal:
+  license: MulanPSL-2.0 AND SHL-0.51
+  license_file_present: true
+  license_risk: medium
+  patent_grant: explicit
+  commercial_use_allowed: unknown
+  notes:
+    - Repository LICENSE identifies the project as Mulan PSL v2.
+    - Some copied RTL/common files may retain ETH Zurich / University of Bologna Solderpad Hardware License 0.51 provenance notices.
+quality:
+  maturity: silicon-proven
+  verification: silicon-validated
+  documentation_quality: basic
+  integration_difficulty: medium
+  silicon_proven: true
+  fpga_proven: unknown
+  notes:
+    - Current code comes from the 20250627 tapeout project source snapshot.
+    - SystemVerilog testbench sources are present under tb/.
+    - No local passing simulation, lint, synthesis, coverage, or silicon validation report artifact is currently recorded.
+internal:
+  status: candidate
+  next_action: Attach tapeout validation evidence and run a reproducible simulation/lint baseline.
+  source_mirror: true
+  mirror_policy: source-mirror
+  silicon_proven: true
+  source_project: 20250627 tapeout project
+  review_notes: reports/review-summary.md
+  integration_notes:
+    - RTL include paths assume local include directories under rtl/ are available to the SystemVerilog compiler.
+    - Common support modules required by the IP have been copied locally for standalone catalog review.
+  used_versions:
+    - 1.0.0
+  used_in_projects:
+    - 20250627 tapeout project
+  rejection_reason: null
+metadata:
+  first_seen_at: 2026-06-09
+  last_reviewed_at: 2026-06-09
+  data_quality: partial
+  maintainers:
+    - openecos-projects

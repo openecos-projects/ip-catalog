@@ -298,6 +298,9 @@
       }
 
       function displayValue(record, column) {
+        if (column.key === "summary" && lang === "zh" && record.summary_zh) {
+          return record.summary_zh;
+        }
         const raw = record[column.key];
         const labels = valueLabels[lang]?.[column.key] || {};
         if (Array.isArray(raw)) {

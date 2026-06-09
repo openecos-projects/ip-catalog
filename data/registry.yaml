@@ -19,3 +19,27 @@ children:
     repository: https://github.com/openecos-projects/ip-000004
     branch: main
     metadata_path: ip.yaml
+  - uid: ip-000005
+    repository: https://github.com/openecos-projects/ip-000005
+    branch: main
+    metadata_path: ip.yaml
+  - uid: ip-000006
+    repository: https://github.com/openecos-projects/ip-000006
+    branch: main
+    metadata_path: ip.yaml
+  - uid: ip-000007
+    repository: https://github.com/openecos-projects/ip-000007
+    branch: main
+    metadata_path: ip.yaml
+  - uid: ip-000008
+    repository: https://github.com/openecos-projects/ip-000008
+    branch: main
+    metadata_path: ip.yaml
+  - uid: ip-000009
+    repository: https://github.com/openecos-projects/ip-000009
+    branch: main
+    metadata_path: ip.yaml
+  - uid: ip-000010
+    repository: https://github.com/openecos-projects/ip-000010
+    branch: main
+    metadata_path: ip.yaml
