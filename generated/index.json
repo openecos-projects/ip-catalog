@@ -41,8 +41,8 @@
       "not_recommended_for": [
         "designs requiring a pinned upstream release without extra provenance work"
       ],
-      "catalog_repository": "https://github.com/openecos-projects/ip-000000",
-      "ip_repository": "https://github.com/openecos-projects/ip-000000",
+      "catalog_repository": "https://github.com/openecos-projects/sys-uart",
+      "ip_repository": "https://github.com/openecos-projects/sys-uart",
       "upstream_repository": "https://github.com/freecores/uart16550",
       "homepage": "https://opencores.org/projects/uart16550",
       "documentation": "https://opencores.org/projects/uart16550",
@@ -113,8 +113,8 @@
       "not_recommended_for": [
         "production-asic-without-license-review"
       ],
-      "catalog_repository": "https://github.com/openecos-projects/ip-000001",
-      "ip_repository": "https://github.com/openecos-projects/ip-000001",
+      "catalog_repository": "https://github.com/openecos-projects/apb4-uart-controller",
+      "ip_repository": "https://github.com/openecos-projects/apb4-uart-controller",
       "upstream_repository": "https://github.com/retroSoC/uart",
       "homepage": "https://github.com/retroSoC/uart",
       "documentation": "https://github.com/retroSoC/uart/blob/main/doc/datasheet.md",
@@ -187,8 +187,8 @@
       "not_recommended_for": [
         "designs requiring immutable read-only registers without reviewing write-enable policy"
       ],
-      "catalog_repository": "https://github.com/openecos-projects/ip-000002",
-      "ip_repository": "https://github.com/openecos-projects/ip-000002",
+      "catalog_repository": "https://github.com/openecos-projects/apb4-architecture-info-register-block",
+      "ip_repository": "https://github.com/openecos-projects/apb4-architecture-info-register-block",
       "upstream_repository": "https://github.com/oscc-ip/archinfo",
       "homepage": "https://github.com/oscc-ip/archinfo",
       "documentation": "https://github.com/oscc-ip/archinfo/blob/main/doc/datasheet.md",
@@ -263,8 +263,8 @@
         "multi-master-i2c",
         "10-bit-addressing"
       ],
-      "catalog_repository": "https://github.com/openecos-projects/ip-000003",
-      "ip_repository": "https://github.com/openecos-projects/ip-000003",
+      "catalog_repository": "https://github.com/openecos-projects/apb4-i2c-master-controller",
+      "ip_repository": "https://github.com/openecos-projects/apb4-i2c-master-controller",
       "upstream_repository": "https://github.com/oscc-ip/i2c",
       "homepage": "https://github.com/oscc-ip/i2c",
       "documentation": "https://github.com/oscc-ip/i2c/blob/main/doc/datasheet.md",
@@ -337,8 +337,8 @@
       "not_recommended_for": [
         "designs requiring more than 32 GPIO channels without RTL changes"
       ],
-      "catalog_repository": "https://github.com/openecos-projects/ip-000004",
-      "ip_repository": "https://github.com/openecos-projects/ip-000004",
+      "catalog_repository": "https://github.com/openecos-projects/apb4-gpio-controller",
+      "ip_repository": "https://github.com/openecos-projects/apb4-gpio-controller",
       "upstream_repository": "https://github.com/oscc-ip/gpio",
       "homepage": "https://github.com/oscc-ip/gpio",
       "documentation": "https://github.com/oscc-ip/gpio/blob/main/doc/datasheet.md",
@@ -410,8 +410,8 @@
       "not_recommended_for": [
         "production-asic-without-license-review"
       ],
-      "catalog_repository": "https://github.com/openecos-projects/ip-000005",
-      "ip_repository": "https://github.com/openecos-projects/ip-000005",
+      "catalog_repository": "https://github.com/openecos-projects/apb4-spi-master-controller",
+      "ip_repository": "https://github.com/openecos-projects/apb4-spi-master-controller",
       "upstream_repository": "https://github.com/oscc-ip/spi",
       "homepage": "https://github.com/oscc-ip/spi",
       "documentation": "https://github.com/oscc-ip/spi/blob/main/doc/datasheet.md",
@@ -482,8 +482,8 @@
       "not_recommended_for": [
         "production-asic-without-license-review"
       ],
-      "catalog_repository": "https://github.com/openecos-projects/ip-000006",
-      "ip_repository": "https://github.com/openecos-projects/ip-000006",
+      "catalog_repository": "https://github.com/openecos-projects/apb4-timer-controller",
+      "ip_repository": "https://github.com/openecos-projects/apb4-timer-controller",
       "upstream_repository": "https://github.com/oscc-ip/timer",
       "homepage": "https://github.com/oscc-ip/timer",
       "documentation": "https://github.com/oscc-ip/timer/blob/main/doc/datasheet.md",
@@ -553,8 +553,8 @@
       "not_recommended_for": [
         "production-asic-without-license-review"
       ],
-      "catalog_repository": "https://github.com/openecos-projects/ip-000007",
-      "ip_repository": "https://github.com/openecos-projects/ip-000007",
+      "catalog_repository": "https://github.com/openecos-projects/apb4-random-number-generator",
+      "ip_repository": "https://github.com/openecos-projects/apb4-random-number-generator",
       "upstream_repository": "https://github.com/oscc-ip/rng",
       "homepage": "https://github.com/oscc-ip/rng",
       "documentation": "https://github.com/oscc-ip/rng/blob/main/doc/datasheet.md",
@@ -625,8 +625,8 @@
       "not_recommended_for": [
         "production-asic-without-license-review"
       ],
-      "catalog_repository": "https://github.com/openecos-projects/ip-000008",
-      "ip_repository": "https://github.com/openecos-projects/ip-000008",
+      "catalog_repository": "https://github.com/openecos-projects/apb4-pwm-controller",
+      "ip_repository": "https://github.com/openecos-projects/apb4-pwm-controller",
       "upstream_repository": "https://github.com/oscc-ip/pwm",
       "homepage": "https://github.com/oscc-ip/pwm",
       "documentation": "https://github.com/oscc-ip/pwm/blob/main/doc/datasheet.md",
@@ -696,8 +696,8 @@
       "not_recommended_for": [
         "production-asic-without-license-review"
       ],
-      "catalog_repository": "https://github.com/openecos-projects/ip-000009",
-      "ip_repository": "https://github.com/openecos-projects/ip-000009",
+      "catalog_repository": "https://github.com/openecos-projects/apb4-ps2-keyboard-controller",
+      "ip_repository": "https://github.com/openecos-projects/apb4-ps2-keyboard-controller",
       "upstream_repository": "https://github.com/oscc-ip/ps2",
       "homepage": "https://github.com/oscc-ip/ps2",
       "documentation": "https://github.com/oscc-ip/ps2/blob/main/doc/datasheet.md",
@@ -767,8 +767,8 @@
       "not_recommended_for": [
         "production-asic-without-license-review"
       ],
-      "catalog_repository": "https://github.com/openecos-projects/ip-000010",
-      "ip_repository": "https://github.com/openecos-projects/ip-000010",
+      "catalog_repository": "https://github.com/openecos-projects/axi4-psram-controller",
+      "ip_repository": "https://github.com/openecos-projects/axi4-psram-controller",
       "upstream_repository": "https://github.com/oscc-ip/psram",
       "homepage": "https://github.com/oscc-ip/psram",
       "documentation": "https://github.com/oscc-ip/psram/blob/main/doc/datasheet.md",

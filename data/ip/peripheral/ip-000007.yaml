@@ -31,7 +31,7 @@ catalog:
   repository: git@github.com:openecos-projects/ip-catalog.git
   path: data/ip/peripheral/ip-000007.yaml
 links:
-  catalog_repository: https://github.com/openecos-projects/ip-000007
+  catalog_repository: https://github.com/openecos-projects/apb4-random-number-generator
   repository: https://github.com/oscc-ip/rng
   homepage: https://github.com/oscc-ip/rng
   documentation: https://github.com/oscc-ip/rng/blob/main/doc/datasheet.md

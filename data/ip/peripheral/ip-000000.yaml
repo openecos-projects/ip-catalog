@@ -35,7 +35,7 @@ best_for:
 not_recommended_for:
   - designs requiring a pinned upstream release without extra provenance work
 links:
-  catalog_repository: https://github.com/openecos-projects/ip-000000
+  catalog_repository: https://github.com/openecos-projects/sys-uart
   homepage: https://opencores.org/projects/uart16550
   repository: https://github.com/freecores/uart16550
   documentation: https://opencores.org/projects/uart16550

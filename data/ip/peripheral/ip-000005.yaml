@@ -32,7 +32,7 @@ catalog:
   repository: git@github.com:openecos-projects/ip-catalog.git
   path: data/ip/peripheral/ip-000005.yaml
 links:
-  catalog_repository: https://github.com/openecos-projects/ip-000005
+  catalog_repository: https://github.com/openecos-projects/apb4-spi-master-controller
   repository: https://github.com/oscc-ip/spi
   homepage: https://github.com/oscc-ip/spi
   documentation: https://github.com/oscc-ip/spi/blob/main/doc/datasheet.md
