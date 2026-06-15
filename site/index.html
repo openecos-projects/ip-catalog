@@ -133,6 +133,42 @@
         color: var(--muted);
       }
 
+      .controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 14px;
+      }
+
+      .control-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      label {
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      select,
+      input[type="search"] {
+        min-height: 38px;
+        padding: 0 32px 0 10px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--panel);
+        color: var(--text);
+        font: inherit;
+        font-weight: 600;
+      }
+
+      input[type="search"] {
+        width: min(360px, 100%);
+        padding-right: 10px;
+        font-weight: 500;
+      }
+
       .table-wrap {
         overflow: auto;
         border: 1px solid var(--line);
@@ -204,7 +240,8 @@
         }
 
         .topbar,
-        .summary {
+        .summary,
+        .controls {
           align-items: flex-start;
           flex-direction: column;
         }
@@ -233,6 +270,18 @@
         <div class="muted" id="dataSource"></div>
       </section>
 
+      <section class="controls" aria-label="Sort controls">
+        <div class="control-group">
+          <label id="searchLabel" for="searchInput">搜索</label>
+          <input id="searchInput" type="search" autocomplete="off">
+        </div>
+        <div class="control-group">
+          <label id="sortLabel" for="sortField">排序</label>
+          <select id="sortField"></select>
+        </div>
+        <button id="sortDirection" type="button"></button>
+      </section>
+
       <section class="table-wrap" id="tableWrap"></section>
     </main>
 
@@ -250,6 +299,18 @@
           unknown: "未知",
           open: "打开",
           downloadJson: "下载 JSON",
+          searchLabel: "搜索",
+          searchPlaceholder: "名称、功能族、分类、状态、接口...",
+          sortLabel: "排序",
+          ascending: "升序",
+          descending: "降序",
+          sortOptions: {
+            last_reviewed_at: "日期",
+            display_name: "名称",
+            ip_family: "功能族",
+            category: "分类",
+            status: "状态",
+          },
           columns: {
             display_name: "名称",
             ip_family: "功能族",
@@ -257,6 +318,7 @@
             status: "状态",
             maturity: "成熟度",
             interfaces: "接口",
+            last_reviewed_at: "复核日期",
             summary: "摘要",
           },
         },
@@ -269,6 +331,18 @@
           unknown: "unknown",
           open: "Open",
           downloadJson: "Download JSON",
+          searchLabel: "Search",
+          searchPlaceholder: "Name, family, category, status, interface...",
+          sortLabel: "Sort",
+          ascending: "Ascending",
+          descending: "Descending",
+          sortOptions: {
+            last_reviewed_at: "Date",
+            display_name: "Name",
+            ip_family: "Family",
+            category: "Category",
+            status: "Status",
+          },
           columns: {
             display_name: "Name",
             ip_family: "Family",
@@ -276,10 +350,19 @@
             status: "Status",
             maturity: "Maturity",
             interfaces: "Interfaces",
+            last_reviewed_at: "Review Date",
             summary: "Summary",
           },
         },
       };
+
+      const sortOptions = [
+        "last_reviewed_at",
+        "display_name",
+        "ip_family",
+        "category",
+        "status",
+      ];
 
       const columns = [
         { key: "display_name" },
@@ -288,12 +371,16 @@
         { key: "status" },
         { key: "maturity" },
         { key: "interfaces" },
+        { key: "last_reviewed_at" },
         { key: "summary" },
       ];
 
       let records = [];
       let valueLabels = { zh: {}, en: {} };
       let lang = "zh";
+      let searchQuery = "";
+      let sortField = "last_reviewed_at";
+      let sortDirection = "desc";
 
       const els = {
         count: document.querySelector("#count"),
@@ -302,6 +389,11 @@
         langZh: document.querySelector("#langZh"),
         langEn: document.querySelector("#langEn"),
         downloadJson: document.querySelector("#downloadJson"),
+        searchLabel: document.querySelector("#searchLabel"),
+        searchInput: document.querySelector("#searchInput"),
+        sortLabel: document.querySelector("#sortLabel"),
+        sortField: document.querySelector("#sortField"),
+        sortDirection: document.querySelector("#sortDirection"),
       };
 
       function t() {
@@ -328,6 +420,55 @@
         return labels[raw] || String(raw);
       }
 
+      function searchableText(record) {
+        return [
+          record.uid,
+          displayValue(record, { key: "display_name" }),
+          displayValue(record, { key: "ip_family" }),
+          displayValue(record, { key: "category" }),
+          displayValue(record, { key: "status" }),
+          displayValue(record, { key: "maturity" }),
+          displayValue(record, { key: "interfaces" }),
+          displayValue(record, { key: "last_reviewed_at" }),
+          displayValue(record, { key: "summary" }),
+        ].join(" ").toLocaleLowerCase();
+      }
+
+      function filteredRecords() {
+        const query = searchQuery.trim().toLocaleLowerCase();
+        if (!query) return records;
+        return records.filter((record) => searchableText(record).includes(query));
+      }
+
+      function sortValue(record, key) {
+        if (key === "last_reviewed_at") {
+          const time = Date.parse(record.last_reviewed_at || "");
+          return Number.isNaN(time) ? 0 : time;
+        }
+        return displayValue(record, { key }).toLocaleLowerCase();
+      }
+
+      function sortedRecords(items) {
+        const direction = sortDirection === "asc" ? 1 : -1;
+        return [...items].sort((a, b) => {
+          const aValue = sortValue(a, sortField);
+          const bValue = sortValue(b, sortField);
+          let result = 0;
+          if (typeof aValue === "number" && typeof bValue === "number") {
+            result = aValue - bValue;
+          } else {
+            result = String(aValue).localeCompare(String(bValue), lang === "zh" ? "zh-CN" : "en", {
+              numeric: true,
+              sensitivity: "base",
+            });
+          }
+          if (result === 0) {
+            result = String(a.uid || "").localeCompare(String(b.uid || ""), undefined, { numeric: true });
+          }
+          return result * direction;
+        });
+      }
+
       function cellContent(record, column) {
         const value = record[column.key];
         if (column.key === "uid") {
@@ -352,14 +493,31 @@
       }
 
       function render() {
-        els.count.textContent = t().records(records.length);
+        const visibleRecords = filteredRecords();
+        els.count.textContent = searchQuery.trim()
+          ? `${t().records(visibleRecords.length)} / ${t().records(records.length)}`
+          : t().records(records.length);
         els.dataSource.innerHTML = `${t().dataSource} <code>generated/index.json</code>`;
         document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
         els.langZh.classList.toggle("active", lang === "zh");
         els.langEn.classList.toggle("active", lang === "en");
         els.downloadJson.textContent = t().downloadJson;
+        els.searchLabel.textContent = t().searchLabel;
+        els.searchInput.placeholder = t().searchPlaceholder;
+        els.searchInput.value = searchQuery;
+        els.sortLabel.textContent = t().sortLabel;
+        els.sortDirection.textContent = sortDirection === "asc" ? t().ascending : t().descending;
+        els.sortDirection.setAttribute("aria-label", els.sortDirection.textContent);
+        els.sortField.innerHTML = "";
+        sortOptions.forEach((option) => {
+          const item = document.createElement("option");
+          item.value = option;
+          item.textContent = t().sortOptions[option];
+          item.selected = option === sortField;
+          els.sortField.appendChild(item);
+        });
 
-        if (!records.length) {
+        if (!visibleRecords.length) {
           els.tableWrap.innerHTML = `<div class="empty">${t().empty}</div>`;
           return;
         }
@@ -376,7 +534,7 @@
         table.appendChild(thead);
 
         const tbody = document.createElement("tbody");
-        records.forEach((record) => {
+        sortedRecords(visibleRecords).forEach((record) => {
           const row = document.createElement("tr");
           columns.forEach((column) => {
             const td = document.createElement("td");
@@ -403,6 +561,18 @@
         records = payload.records || [];
         els.langZh.addEventListener("click", () => setLanguage("zh"));
         els.langEn.addEventListener("click", () => setLanguage("en"));
+        els.searchInput.addEventListener("input", () => {
+          searchQuery = els.searchInput.value;
+          render();
+        });
+        els.sortField.addEventListener("change", () => {
+          sortField = els.sortField.value;
+          render();
+        });
+        els.sortDirection.addEventListener("click", () => {
+          sortDirection = sortDirection === "asc" ? "desc" : "asc";
+          render();
+        });
 
         render();
       }
