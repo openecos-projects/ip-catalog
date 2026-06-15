@@ -83,3 +83,7 @@ children:
   repository: https://github.com/openecos-projects/riscv32imac-core
   branch: main
   metadata_path: ip.yaml
+- uid: ip-000021
+  repository: https://github.com/openecos-projects/apb-quad-spi-master-controller
+  branch: main
+  metadata_path: ip.yaml

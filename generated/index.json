@@ -1,6 +1,6 @@
 {
   "generated_from": "data/ip/**/*.yaml",
-  "total": 21,
+  "total": 22,
   "records": [
     {
       "uid": "ip-000000",
@@ -1533,6 +1533,86 @@
       "data_quality": "partial",
       "last_reviewed_at": "2026-06-15",
       "path": "data/ip/processor/ip-000020.yaml"
+    },
+    {
+      "uid": "ip-000021",
+      "repo_name": "apb-quad-spi-master-controller",
+      "slug": "apb-quad-spi-master-controller",
+      "display_name": "APB Quad SPI Master Controller",
+      "summary": "APB-based SPI/QSPI master controller with command, address, dummy-cycle and data phase control, programmable clock divider, TX/RX FIFOs, four chip-select outputs, and interrupt event generation.",
+      "summary_zh": "基于 APB 总线的 SPI/QSPI 主控制器，支持命令、地址、dummy 周期和数据阶段控制，可编程时钟分频，独立收发 FIFO，最多 4 路片选输出以及基于 FIFO 阈值的中断事件输出；当前代码来自 ref/apb_spi_master 本地参考快照。",
+      "category": "peripheral",
+      "subcategories": [
+        "spi",
+        "qspi",
+        "serial"
+      ],
+      "ip_family": "spi",
+      "implementation_style": "standard-compatible",
+      "compatibility": [
+        "amba-apb",
+        "spi",
+        "quad-spi"
+      ],
+      "features": [
+        "spi-master",
+        "quad-spi-read-write",
+        "programmable-clock-divider",
+        "command-address-dummy-data-phases",
+        "tx-rx-fifo",
+        "four-chip-selects",
+        "fifo-threshold-interrupt-event"
+      ],
+      "integration_profile": [
+        "memory-mapped-peripheral",
+        "apb-slave"
+      ],
+      "resource_profile": "small",
+      "performance_profile": "register-programmable",
+      "best_for": [
+        "qspi-flash-controller",
+        "small-mcu",
+        "fpga-demo",
+        "education"
+      ],
+      "not_recommended_for": [
+        "production-asic-without-license-review"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/apb-quad-spi-master-controller",
+      "ip_repository": "https://github.com/openecos-projects/apb-quad-spi-master-controller",
+      "upstream_repository": "https://github.com/openecos-projects/apb-quad-spi-master-controller",
+      "homepage": "https://github.com/openecos-projects/apb-quad-spi-master-controller",
+      "documentation": "https://github.com/openecos-projects/apb-quad-spi-master-controller/blob/main/docs/datasheet.md",
+      "upstream_owner": "openecos-projects",
+      "upstream_status": "reference-snapshot",
+      "current_ref": "ref-apb-spi-master-20260615",
+      "current_ref_type": "source-snapshot",
+      "languages": [
+        "Verilog"
+      ],
+      "interfaces": [
+        "apb",
+        "spi",
+        "qspi",
+        "interrupt"
+      ],
+      "bus_compatibility": [
+        "apb"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "unknown",
+      "maturity": "candidate",
+      "documentation_quality": "basic",
+      "integration_difficulty": "medium",
+      "license": "SHL-0.51",
+      "license_risk": "medium",
+      "commercial_use_allowed": "unknown",
+      "status": "candidate",
+      "next_action": "Add a repository-level LICENSE file, attach upstream provenance, run lint and simulation, and add software programming examples.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-15",
+      "path": "data/ip/peripheral/ip-000021.yaml"
     }
   ]
 }

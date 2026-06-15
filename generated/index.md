@@ -1,6 +1,6 @@
 # IP Catalog Index
 
-Total IP records: 21
+Total IP records: 22
 
 | UID | Name | Family | Category | Status | License | Maturity | Source |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -25,6 +25,7 @@ Total IP records: 21
 | [ip-000018](../data/ip/memory/ip-000018.yaml) | DDR3 Memory Controller | ddr3-controller | memory | planned | proprietary-or-undetermined | in-development | openecos-projects |
 | [ip-000019](../data/ip/interconnect/ip-000019.yaml) | Basic SoC Interconnect Bus | soc-interconnect | interconnect | planned | proprietary-or-undetermined | in-development | openecos-projects |
 | [ip-000020](../data/ip/processor/ip-000020.yaml) | RISCV32IMAC Processor Core | riscv-core | processor | planned | proprietary-or-undetermined | in-verification | openecos-projects |
+| [ip-000021](../data/ip/peripheral/ip-000021.yaml) | APB Quad SPI Master Controller | spi | peripheral | candidate | SHL-0.51 | candidate | openecos-projects |
 
 ## Notes
 
