@@ -1,45 +1,85 @@
 children:
-  - uid: ip-000000
-    repository: https://github.com/openecos-projects/ip-000000
-    branch: main
-    metadata_path: ip.yaml
-  - uid: ip-000001
-    repository: https://github.com/openecos-projects/ip-000001
-    branch: main
-    metadata_path: ip.yaml
-  - uid: ip-000002
-    repository: https://github.com/openecos-projects/ip-000002
-    branch: main
-    metadata_path: ip.yaml
-  - uid: ip-000003
-    repository: https://github.com/openecos-projects/ip-000003
-    branch: main
-    metadata_path: ip.yaml
-  - uid: ip-000004
-    repository: https://github.com/openecos-projects/ip-000004
-    branch: main
-    metadata_path: ip.yaml
-  - uid: ip-000005
-    repository: https://github.com/openecos-projects/ip-000005
-    branch: main
-    metadata_path: ip.yaml
-  - uid: ip-000006
-    repository: https://github.com/openecos-projects/ip-000006
-    branch: main
-    metadata_path: ip.yaml
-  - uid: ip-000007
-    repository: https://github.com/openecos-projects/ip-000007
-    branch: main
-    metadata_path: ip.yaml
-  - uid: ip-000008
-    repository: https://github.com/openecos-projects/ip-000008
-    branch: main
-    metadata_path: ip.yaml
-  - uid: ip-000009
-    repository: https://github.com/openecos-projects/ip-000009
-    branch: main
-    metadata_path: ip.yaml
-  - uid: ip-000010
-    repository: https://github.com/openecos-projects/ip-000010
-    branch: main
-    metadata_path: ip.yaml
+- uid: ip-000000
+  repository: https://github.com/openecos-projects/sys-uart
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000001
+  repository: https://github.com/openecos-projects/apb4-uart-controller
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000002
+  repository: https://github.com/openecos-projects/apb4-architecture-info-register-block
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000003
+  repository: https://github.com/openecos-projects/apb4-i2c-master-controller
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000004
+  repository: https://github.com/openecos-projects/apb4-gpio-controller
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000005
+  repository: https://github.com/openecos-projects/apb4-spi-master-controller
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000006
+  repository: https://github.com/openecos-projects/apb4-timer-controller
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000007
+  repository: https://github.com/openecos-projects/apb4-random-number-generator
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000008
+  repository: https://github.com/openecos-projects/apb4-pwm-controller
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000009
+  repository: https://github.com/openecos-projects/apb4-ps2-keyboard-controller
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000010
+  repository: https://github.com/openecos-projects/axi4-psram-controller
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000011
+  repository: https://github.com/openecos-projects/apb4-crc-controller
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000012
+  repository: https://github.com/openecos-projects/apb4-plic-controller
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000013
+  repository: https://github.com/openecos-projects/apb4-reset-clock-unit
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000014
+  repository: https://github.com/openecos-projects/apb4-rtc-controller
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000015
+  repository: https://github.com/openecos-projects/apb4-clint-controller
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000016
+  repository: https://github.com/openecos-projects/55nm-pll-ip
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000017
+  repository: https://github.com/openecos-projects/55nm-ddr3-ddr2-phy
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000018
+  repository: https://github.com/openecos-projects/ddr3-memory-controller
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000019
+  repository: https://github.com/openecos-projects/soc-interconnect-bus
+  branch: main
+  metadata_path: ip.yaml
+- uid: ip-000020
+  repository: https://github.com/openecos-projects/riscv32imac-core
+  branch: main
+  metadata_path: ip.yaml

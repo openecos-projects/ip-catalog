@@ -1,0 +1,134 @@
+uid: ip-000019
+repo_name: ip-000019
+slug: soc-interconnect-bus
+display_name: Basic SoC Interconnect Bus
+summary: Basic SoC interconnect bus supporting 1 to 16 AXI masters, a single AHB master, up to 32 AXI slaves, up to 32 AHB slaves, and up to 31 external APB slaves through an AHB-to-APB bridge.
+summary_zh: 基础互联总线，支持 1 到 16 个 AXI Master、单 AHB master、最多 32 个 AXI slaves、32 个 AHB slaves，并通过 AHB-to-APB bridge 支持最多 31 个外部 APB slaves；最大总线宽度 128bits，当前正在开发中。
+category: interconnect
+subcategories:
+  - axi
+  - ahb
+  - apb
+ip_family: soc-interconnect
+implementation_style: rtl
+compatibility:
+  - amba-axi
+  - amba-ahb
+  - amba-apb
+features:
+  - 1-to-16-axi-masters
+  - single-ahb-master
+  - up-to-32-axi-slaves
+  - up-to-32-ahb-slaves
+  - up-to-31-apb-slaves-through-ahb-to-apb-bridge
+  - up-to-128-bit-data-width
+  - single-clock-axi-master-support
+integration_profile:
+  - soc-interconnect
+  - memory-mapped-bus-fabric
+resource_profile: scalable
+performance_profile: configurable-width
+best_for:
+  - small-to-medium-soc
+  - mixed-axi-ahb-apb-systems
+not_recommended_for:
+  - multi-clock-axi-master-systems-without-extra-cdc-review
+catalog:
+  repository: git@github.com:openecos-projects/ip-catalog.git
+  path: data/ip/interconnect/ip-000019.yaml
+links:
+  catalog_repository: https://github.com/openecos-projects/soc-interconnect-bus
+  repository: https://github.com/openecos-projects/soc-interconnect-bus
+  homepage: https://github.com/openecos-projects/soc-interconnect-bus
+  documentation: https://github.com/openecos-projects/soc-interconnect-bus/blob/main/docs/datasheet.md
+upstream:
+  owner: openecos-projects
+  repository: https://github.com/openecos-projects/soc-interconnect-bus
+  author: OpenECOS project contributors
+  contributors: []
+  status: in-development
+  default_branch: main
+  ref: ref/正在开发的IP.docx
+  ref_type: planning-document
+  commit: null
+  sync_policy: none
+tracking:
+  current_ref: planning-doc-20260615
+  current_ref_type: planning-document
+  baseline_ref: ref/正在开发的IP.docx
+  baseline_reviewed_at: 2026-06-15
+  update_policy: manual
+  provenance:
+    source_project: internal IP development list
+    source_snapshot: 2026-06-15 docx extraction
+    silicon_validated: false
+    status_note: 正在开发中
+versions:
+  - version: 0.1.0
+    ref: planning-doc-20260615
+    date: 2026-06-15
+    status: in-development
+    notes: Metadata created from ref/正在开发的IP.docx; interconnect RTL is not included yet.
+technical:
+  languages:
+    - SystemVerilog planned
+  interfaces:
+    - axi
+    - ahb
+    - apb
+  bus_compatibility:
+    - axi
+    - ahb
+    - apb
+  dependencies:
+    - AHB-to-APB bridge
+  top_modules: []
+  clock_domains: single-clock AXI master support recorded; broader clocking assumptions unknown
+  reset_scheme: unknown
+  parameterizable: expected
+  target_process: generic
+  fpga_support: unknown
+  asic_support: planned
+  toolchains: []
+  deliverables:
+    rtl: absent
+    testbench: absent
+    docs: basic
+    constraints: absent
+legal:
+  license: proprietary-or-undetermined
+  license_file_present: false
+  license_risk: high
+  patent_grant: unknown
+  commercial_use_allowed: unknown
+  notes:
+    - License terms were not provided in the source document.
+quality:
+  maturity: in-development
+  verification: not-recorded
+  documentation_quality: planning-note
+  integration_difficulty: high
+  silicon_proven: false
+  fpga_proven: unknown
+  notes:
+    - No local RTL, arbitration policy, address map generator, protocol compliance test, or timing report is present.
+internal:
+  status: planned
+  next_action: Add bus fabric RTL, configuration schema, arbitration/address mapping documentation, and protocol verification evidence.
+  source_mirror: false
+  mirror_policy: metadata-only
+  silicon_proven: false
+  source_project: internal IP development list
+  review_notes: reports/review-summary.md
+  integration_notes:
+    - Current source document explicitly limits AXI master support to a single clock.
+  used_versions:
+    - 0.1.0
+  used_in_projects: []
+  rejection_reason: null
+metadata:
+  first_seen_at: 2026-06-15
+  last_reviewed_at: 2026-06-15
+  data_quality: partial
+  maintainers:
+    - openecos-projects

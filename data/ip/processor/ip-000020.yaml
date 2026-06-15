@@ -1,0 +1,134 @@
+uid: ip-000020
+repo_name: ip-000020
+slug: riscv32imac-core
+display_name: RISCV32IMAC Processor Core
+summary: RISC-V RV32IMAC processor core with instruction and data caches, multi-stage pipeline, AXI memory interface, RISC-V Debug support, and CoreMark/MHz above 2.
+summary_zh: RISCV32IMAC 处理器，包含 ICache 和 DCache、多级流水线结构、AXI 总线访存接口、RISC-V Debug 调试支持，CoreMark/MHz 在 2 分以上；当前正在验证中，准备流片验证。
+category: processor
+subcategories:
+  - riscv
+  - cpu-core
+ip_family: riscv-core
+implementation_style: rtl
+compatibility:
+  - riscv-rv32imac
+  - riscv-debug
+  - amba-axi
+features:
+  - rv32imac
+  - icache
+  - dcache
+  - multi-stage-pipeline
+  - axi-memory-interface
+  - riscv-debug
+  - coremark-per-mhz-gt-2
+integration_profile:
+  - processor-core
+  - axi-master
+resource_profile: medium
+performance_profile: coremark-per-mhz-above-2
+best_for:
+  - riscv-soc
+  - education
+  - asic-validation
+not_recommended_for:
+  - safety-certified-production-without-further-verification
+catalog:
+  repository: git@github.com:openecos-projects/ip-catalog.git
+  path: data/ip/processor/ip-000020.yaml
+links:
+  catalog_repository: https://github.com/openecos-projects/riscv32imac-core
+  repository: https://github.com/openecos-projects/riscv32imac-core
+  homepage: https://github.com/openecos-projects/riscv32imac-core
+  documentation: https://github.com/openecos-projects/riscv32imac-core/blob/main/docs/datasheet.md
+upstream:
+  owner: openecos-projects
+  repository: https://github.com/openecos-projects/riscv32imac-core
+  author: OpenECOS project contributors
+  contributors: []
+  status: in-verification
+  default_branch: main
+  ref: ref/正在开发的IP.docx
+  ref_type: planning-document
+  commit: null
+  sync_policy: none
+tracking:
+  current_ref: planning-doc-20260615
+  current_ref_type: planning-document
+  baseline_ref: ref/正在开发的IP.docx
+  baseline_reviewed_at: 2026-06-15
+  update_policy: manual
+  provenance:
+    source_project: internal IP development list
+    source_snapshot: 2026-06-15 docx extraction
+    silicon_validated: false
+    status_note: 正在验证中，准备流片验证
+versions:
+  - version: 0.1.0
+    ref: planning-doc-20260615
+    date: 2026-06-15
+    status: in-verification
+    notes: Metadata created from ref/正在开发的IP.docx; processor RTL and verification collateral are not included yet.
+technical:
+  languages:
+    - SystemVerilog planned
+  interfaces:
+    - axi
+    - riscv-debug
+    - interrupt
+  bus_compatibility:
+    - axi
+  dependencies:
+    - RISC-V toolchain for software validation
+    - SoC memory and interrupt subsystem
+  top_modules: []
+  clock_domains: processor/system clock
+  reset_scheme: unknown
+  parameterizable: unknown
+  target_process: generic
+  fpga_support: unknown
+  asic_support: pre-tapeout-verification
+  toolchains: []
+  deliverables:
+    rtl: absent
+    testbench: absent
+    debug_collateral: absent
+    docs: basic
+    constraints: absent
+legal:
+  license: proprietary-or-undetermined
+  license_file_present: false
+  license_risk: high
+  patent_grant: unknown
+  commercial_use_allowed: unknown
+  notes:
+    - License terms were not provided in the source document.
+quality:
+  maturity: in-verification
+  verification: in-progress
+  documentation_quality: planning-note
+  integration_difficulty: high
+  silicon_proven: false
+  fpga_proven: unknown
+  notes:
+    - No local RTL, ISA compliance report, CoreMark log, debug test, or tapeout validation package is present.
+internal:
+  status: planned
+  next_action: Add CPU RTL, ISA compliance results, CoreMark logs, debug validation, cache behavior documentation, and tapeout verification evidence.
+  source_mirror: false
+  mirror_policy: metadata-only
+  silicon_proven: false
+  source_project: internal IP development list
+  review_notes: reports/review-summary.md
+  integration_notes:
+    - Treat CoreMark/MHz greater than 2 as a source-document claim until measured logs are attached.
+  used_versions:
+    - 0.1.0
+  used_in_projects: []
+  rejection_reason: null
+metadata:
+  first_seen_at: 2026-06-15
+  last_reviewed_at: 2026-06-15
+  data_quality: partial
+  maintainers:
+    - openecos-projects

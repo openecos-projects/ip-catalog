@@ -1,0 +1,128 @@
+uid: ip-000016
+repo_name: ip-000016
+slug: pll-55nm
+display_name: 55nm PLL IP
+summary: 55nm process PLL IP targeting 500 MHz to 1200 MHz output with integer continuous division, 5 MHz to 40 MHz input, and period jitter below 30 ps.
+summary_zh: 55nm 制程 PLL IP，面向 1.2V core 电压设计，支持 5MHz 到 40MHz 输入、500MHz 到 1200MHz 输出、连续整数分频，目标面积小于 200um x 200um，功耗小于 1.5mA，Period jitter 小于 30ps；Test Chip 完整电路与 GDS 文件以及行为模型源码待入库。
+category: clocking
+subcategories:
+  - pll
+  - analog
+ip_family: pll
+implementation_style: hard-macro
+compatibility:
+  - 55nm-process
+features:
+  - 500mhz-to-1200mhz-output
+  - 5mhz-to-40mhz-input
+  - integer-continuous-divider
+  - period-jitter-lt-30ps
+  - 1p2v-core-voltage
+  - behavior-model-planned
+integration_profile:
+  - clock-generation
+  - analog-hard-macro
+resource_profile: small-hard-macro
+performance_profile: process-specific
+best_for:
+  - 55nm-asic
+  - soc-clock-generation
+not_recommended_for:
+  - process-portable-rtl-only-design
+catalog:
+  repository: git@github.com:openecos-projects/ip-catalog.git
+  path: data/ip/clocking/ip-000016.yaml
+links:
+  catalog_repository: https://github.com/openecos-projects/55nm-pll-ip
+  repository: https://github.com/openecos-projects/55nm-pll-ip
+  homepage: https://github.com/openecos-projects/55nm-pll-ip
+  documentation: https://github.com/openecos-projects/55nm-pll-ip/blob/main/docs/datasheet.md
+upstream:
+  owner: openecos-projects
+  repository: https://github.com/openecos-projects/55nm-pll-ip
+  author: OpenECOS project contributors
+  contributors: []
+  status: in-development
+  default_branch: main
+  ref: ref/正在开发的IP.docx
+  ref_type: planning-document
+  commit: null
+  sync_policy: none
+tracking:
+  current_ref: planning-doc-20260615
+  current_ref_type: planning-document
+  baseline_ref: ref/正在开发的IP.docx
+  baseline_reviewed_at: 2026-06-15
+  update_policy: manual
+  provenance:
+    source_project: internal IP development list
+    source_snapshot: 2026-06-15 docx extraction
+    silicon_validated: false
+    status_note: 已流片但是未回片
+versions:
+  - version: 0.1.0
+    ref: planning-doc-20260615
+    date: 2026-06-15
+    status: in-development
+    notes: Metadata created from ref/正在开发的IP.docx; design artifacts are not included yet.
+technical:
+  languages:
+    - Verilog-A or behavioral model source planned
+  interfaces:
+    - clock
+    - reset
+  bus_compatibility: []
+  dependencies:
+    - 55nm foundry PDK and signoff collateral
+  top_modules: []
+  clock_domains: generates PLL output clock from 5 MHz to 40 MHz reference input
+  reset_scheme: unknown
+  parameterizable: limited
+  target_process: 55nm
+  fpga_support: not-applicable
+  asic_support: tapeout-pending-silicon-return
+  toolchains: []
+  deliverables:
+    behavior_model: planned
+    test_chip_circuit: planned
+    gds: planned
+    rtl: absent
+    docs: basic
+legal:
+  license: proprietary-or-undetermined
+  license_file_present: false
+  license_risk: high
+  patent_grant: unknown
+  commercial_use_allowed: unknown
+  notes:
+    - License terms were not provided in the source document.
+quality:
+  maturity: tapeout-pending-return
+  verification: unknown
+  documentation_quality: planning-note
+  integration_difficulty: high
+  silicon_proven: false
+  fpga_proven: not-applicable
+  notes:
+    - Source document says the PLL has been taped out but silicon has not returned.
+    - No local characterization report, signoff report, model source, circuit, or GDS artifact is present.
+internal:
+  status: planned
+  next_action: Add behavior model, Test Chip circuit/GDS provenance, process collateral constraints, and silicon characterization results after chip return.
+  source_mirror: false
+  mirror_policy: metadata-only
+  silicon_proven: false
+  source_project: internal IP development list
+  review_notes: reports/review-summary.md
+  integration_notes:
+    - Treat this entry as a process-specific hard macro placeholder until deliverables are attached.
+  used_versions:
+    - 0.1.0
+  used_in_projects: []
+  rejection_reason: null
+metadata:
+  first_seen_at: 2026-06-15
+  last_reviewed_at: 2026-06-15
+  data_quality: partial
+  maintainers:
+    - openecos-projects

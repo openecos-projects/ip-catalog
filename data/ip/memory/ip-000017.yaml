@@ -1,0 +1,134 @@
+uid: ip-000017
+repo_name: ip-000017
+slug: ddr3-ddr2-phy-55nm
+display_name: 55nm DDR3/2 PHY IP
+summary: 55nm DDR3/DDR2 PHY IP using a DFI interface between the DDR controller and DDR SDRAM devices, targeting DDR3-800 to DDR3-1600 and DDR2-667 to DDR2-1066 speed grades.
+summary_zh: 55nm 制程 DDR3/2 PHY IP，通过 DFI 接口与 DDR 控制器交互，连接 DDR3 颗粒，支持 DDR3-800 到 DDR3-1600，并兼容 DDR2-667 到 DDR2-1066；当前状态为正在验证中。
+category: memory
+subcategories:
+  - ddr-phy
+  - ddr3
+  - ddr2
+ip_family: ddr-phy
+implementation_style: hard-macro
+compatibility:
+  - dfi
+  - ddr3
+  - ddr2
+  - 55nm-process
+features:
+  - dfi-interface
+  - ddr3-800
+  - ddr3-1066
+  - ddr3-1333
+  - ddr3-1600
+  - ddr2-667
+  - ddr2-800
+  - ddr2-1066
+integration_profile:
+  - dfi-phy
+  - external-ddr-sdram
+resource_profile: process-specific-hard-macro
+performance_profile: ddr3-1600-capable
+best_for:
+  - 55nm-asic
+  - ddr3-memory-subsystem
+not_recommended_for:
+  - fpga-only-design
+catalog:
+  repository: git@github.com:openecos-projects/ip-catalog.git
+  path: data/ip/memory/ip-000017.yaml
+links:
+  catalog_repository: https://github.com/openecos-projects/55nm-ddr3-ddr2-phy
+  repository: https://github.com/openecos-projects/55nm-ddr3-ddr2-phy
+  homepage: https://github.com/openecos-projects/55nm-ddr3-ddr2-phy
+  documentation: https://github.com/openecos-projects/55nm-ddr3-ddr2-phy/blob/main/docs/datasheet.md
+upstream:
+  owner: openecos-projects
+  repository: https://github.com/openecos-projects/55nm-ddr3-ddr2-phy
+  author: OpenECOS project contributors
+  contributors: []
+  status: in-verification
+  default_branch: main
+  ref: ref/正在开发的IP.docx
+  ref_type: planning-document
+  commit: null
+  sync_policy: none
+tracking:
+  current_ref: planning-doc-20260615
+  current_ref_type: planning-document
+  baseline_ref: ref/正在开发的IP.docx
+  baseline_reviewed_at: 2026-06-15
+  update_policy: manual
+  provenance:
+    source_project: internal IP development list
+    source_snapshot: 2026-06-15 docx extraction
+    silicon_validated: false
+    status_note: 正在验证中
+versions:
+  - version: 0.1.0
+    ref: planning-doc-20260615
+    date: 2026-06-15
+    status: in-verification
+    notes: Metadata created from ref/正在开发的IP.docx; PHY implementation artifacts are not included yet.
+technical:
+  languages:
+    - SystemVerilog or mixed-signal model planned
+  interfaces:
+    - dfi
+    - ddr
+  bus_compatibility:
+    - dfi
+  dependencies:
+    - compatible DDR controller
+    - 55nm foundry PDK and DDR IO collateral
+  top_modules: []
+  clock_domains: controller clock from 166 MHz to 400 MHz; SDRAM clock from 333 MHz to 800 MHz
+  reset_scheme: unknown
+  parameterizable: speed-grade dependent
+  target_process: 55nm
+  fpga_support: not-applicable
+  asic_support: in-verification
+  toolchains: []
+  deliverables:
+    phy_macro: absent
+    timing_models: absent
+    rtl_or_behavior_model: absent
+    docs: basic
+legal:
+  license: proprietary-or-undetermined
+  license_file_present: false
+  license_risk: high
+  patent_grant: unknown
+  commercial_use_allowed: unknown
+  notes:
+    - License terms were not provided in the source document.
+quality:
+  maturity: in-verification
+  verification: in-progress
+  documentation_quality: planning-note
+  integration_difficulty: high
+  silicon_proven: false
+  fpga_proven: not-applicable
+  notes:
+    - No local PHY macro, timing model, IO ring constraints, DFI compliance report, or DDR bring-up report is present.
+internal:
+  status: planned
+  next_action: Attach PHY deliverables, DFI timing documentation, supported SDRAM configuration matrix, and verification evidence.
+  source_mirror: false
+  mirror_policy: metadata-only
+  silicon_proven: false
+  source_project: internal IP development list
+  review_notes: reports/review-summary.md
+  integration_notes:
+    - Designed to sit between a DDR controller and external DDR2/DDR3 SDRAM devices through DFI.
+  used_versions:
+    - 0.1.0
+  used_in_projects: []
+  rejection_reason: null
+metadata:
+  first_seen_at: 2026-06-15
+  last_reviewed_at: 2026-06-15
+  data_quality: partial
+  maintainers:
+    - openecos-projects

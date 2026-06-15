@@ -1,0 +1,125 @@
+uid: ip-000018
+repo_name: ip-000018
+slug: ddr3-memory-controller
+display_name: DDR3 Memory Controller
+summary: DDR3 memory controller intended to connect to a DDR PHY through DFI and drive external DDR3 SDRAM devices as a complete memory subsystem.
+summary_zh: DDR3 内存控制器，通过 DFI 接口连接 DDR PHY，再由 PHY 连接 DDR3 颗粒；需要配合相应 PHY 才能完整工作，当前正在开发中。
+category: memory
+subcategories:
+  - ddr3
+  - memory-controller
+ip_family: ddr3-controller
+implementation_style: rtl
+compatibility:
+  - dfi
+  - ddr3
+features:
+  - dfi-interface
+  - ddr3-sdram-control
+  - phy-dependent-operation
+integration_profile:
+  - memory-controller
+  - dfi-controller-side
+resource_profile: medium
+performance_profile: phy-dependent
+best_for:
+  - ddr3-memory-subsystem
+  - asic-soc
+not_recommended_for:
+  - standalone-use-without-ddr-phy
+catalog:
+  repository: git@github.com:openecos-projects/ip-catalog.git
+  path: data/ip/memory/ip-000018.yaml
+links:
+  catalog_repository: https://github.com/openecos-projects/ddr3-memory-controller
+  repository: https://github.com/openecos-projects/ddr3-memory-controller
+  homepage: https://github.com/openecos-projects/ddr3-memory-controller
+  documentation: https://github.com/openecos-projects/ddr3-memory-controller/blob/main/docs/datasheet.md
+upstream:
+  owner: openecos-projects
+  repository: https://github.com/openecos-projects/ddr3-memory-controller
+  author: OpenECOS project contributors
+  contributors: []
+  status: in-development
+  default_branch: main
+  ref: ref/正在开发的IP.docx
+  ref_type: planning-document
+  commit: null
+  sync_policy: none
+tracking:
+  current_ref: planning-doc-20260615
+  current_ref_type: planning-document
+  baseline_ref: ref/正在开发的IP.docx
+  baseline_reviewed_at: 2026-06-15
+  update_policy: manual
+  provenance:
+    source_project: internal IP development list
+    source_snapshot: 2026-06-15 docx extraction
+    silicon_validated: false
+    status_note: 目前正在开发中
+versions:
+  - version: 0.1.0
+    ref: planning-doc-20260615
+    date: 2026-06-15
+    status: in-development
+    notes: Metadata created from ref/正在开发的IP.docx; controller RTL is not included yet.
+technical:
+  languages:
+    - SystemVerilog planned
+  interfaces:
+    - dfi
+    - ddr3
+  bus_compatibility:
+    - dfi
+  dependencies:
+    - compatible DDR3 PHY
+  top_modules: []
+  clock_domains: controller clock, PHY clocking dependent
+  reset_scheme: unknown
+  parameterizable: expected
+  target_process: generic
+  fpga_support: unknown
+  asic_support: planned
+  toolchains: []
+  deliverables:
+    rtl: absent
+    testbench: absent
+    docs: basic
+    constraints: absent
+legal:
+  license: proprietary-or-undetermined
+  license_file_present: false
+  license_risk: high
+  patent_grant: unknown
+  commercial_use_allowed: unknown
+  notes:
+    - License terms were not provided in the source document.
+quality:
+  maturity: in-development
+  verification: not-recorded
+  documentation_quality: planning-note
+  integration_difficulty: high
+  silicon_proven: false
+  fpga_proven: unknown
+  notes:
+    - No local RTL, DFI compliance test, simulation result, or DDR3 initialization sequence documentation is present.
+internal:
+  status: planned
+  next_action: Add controller RTL, register/configuration documentation, DFI timing assumptions, and verification plan.
+  source_mirror: false
+  mirror_policy: metadata-only
+  silicon_proven: false
+  source_project: internal IP development list
+  review_notes: reports/review-summary.md
+  integration_notes:
+    - This controller requires a matching DDR PHY to form a complete DDR3 memory subsystem.
+  used_versions:
+    - 0.1.0
+  used_in_projects: []
+  rejection_reason: null
+metadata:
+  first_seen_at: 2026-06-15
+  last_reviewed_at: 2026-06-15
+  data_quality: partial
+  maintainers:
+    - openecos-projects

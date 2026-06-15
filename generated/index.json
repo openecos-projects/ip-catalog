@@ -1,6 +1,6 @@
 {
   "generated_from": "data/ip/**/*.yaml",
-  "total": 11,
+  "total": 21,
   "records": [
     {
       "uid": "ip-000000",
@@ -801,6 +801,738 @@
       "data_quality": "partial",
       "last_reviewed_at": "2026-06-09",
       "path": "data/ip/peripheral/ip-000010.yaml"
+    },
+    {
+      "uid": "ip-000011",
+      "repo_name": "ip-000011",
+      "slug": "crc-apb4",
+      "display_name": "APB4 CRC Controller",
+      "summary": "APB4-based CRC controller supporting CRC8, CRC16, CRC32 polynomials, byte/bit reversal controls, programmable seed, and XOR output.",
+      "summary_zh": "基于 APB4 总线的 CRC 控制器，支持 CRC8、CRC16、CRC32 多项式、输入字节反转、输出位反转、可编程初值和输出异或寄存器，内部基于 LFSR 实现；当前代码来自 20250627 流片工程快照。",
+      "category": "peripheral",
+      "subcategories": [
+        "crc"
+      ],
+      "ip_family": "crc",
+      "implementation_style": "standard-compatible",
+      "compatibility": [
+        "amba-apb"
+      ],
+      "features": [
+        "crc8-crc16-crc32",
+        "programmable-init",
+        "xor-output",
+        "input-output-reversal",
+        "lfsr"
+      ],
+      "integration_profile": [
+        "apb4-slave",
+        "memory-mapped-peripheral"
+      ],
+      "resource_profile": "small",
+      "performance_profile": "register-programmable",
+      "best_for": [
+        "small-mcu",
+        "fpga-demo",
+        "education"
+      ],
+      "not_recommended_for": [
+        "production-asic-without-license-review"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/apb4-crc-controller",
+      "ip_repository": "https://github.com/openecos-projects/apb4-crc-controller",
+      "upstream_repository": "https://github.com/oscc-ip/crc",
+      "homepage": "https://github.com/oscc-ip/crc",
+      "documentation": "https://github.com/oscc-ip/crc/blob/main/doc/datasheet.md",
+      "upstream_owner": "oscc-ip",
+      "upstream_status": "active",
+      "current_ref": "source-snapshot-20250627",
+      "current_ref_type": "snapshot",
+      "languages": [
+        "SystemVerilog",
+        "C"
+      ],
+      "interfaces": [
+        "apb",
+        "interrupt"
+      ],
+      "bus_compatibility": [
+        "apb4"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "proven-through-20250627-project",
+      "maturity": "silicon-proven",
+      "documentation_quality": "basic",
+      "integration_difficulty": "medium",
+      "license": "MulanPSL-2.0 AND SHL-0.51",
+      "license_risk": "medium",
+      "commercial_use_allowed": "unknown",
+      "status": "candidate",
+      "next_action": "Attach tapeout validation evidence and run a reproducible simulation/lint baseline.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-10",
+      "path": "data/ip/peripheral/ip-000011.yaml"
+    },
+    {
+      "uid": "ip-000012",
+      "repo_name": "ip-000012",
+      "slug": "plic-apb4",
+      "display_name": "APB4 PLIC Controller",
+      "summary": "APB4-based RISC-V PLIC-compatible interrupt controller for one hart target, up to 31 external interrupt sources, priorities, masks, and pending state.",
+      "summary_zh": "基于 APB4 总线的 RISC-V PLIC 兼容中断控制器，面向单 hart 目标，支持最多 31 路外部中断、16 级优先级、边沿/电平触发配置、屏蔽位和 pending 状态管理；当前代码来自 20250627 流片工程快照。",
+      "category": "peripheral",
+      "subcategories": [
+        "plic"
+      ],
+      "ip_family": "plic",
+      "implementation_style": "standard-compatible",
+      "compatibility": [
+        "amba-apb"
+      ],
+      "features": [
+        "riscv-plic-compatible",
+        "one-hart",
+        "31-interrupt-sources",
+        "16-priority-levels",
+        "mask-pending"
+      ],
+      "integration_profile": [
+        "apb4-slave",
+        "memory-mapped-peripheral"
+      ],
+      "resource_profile": "small",
+      "performance_profile": "register-programmable",
+      "best_for": [
+        "small-mcu",
+        "fpga-demo",
+        "education"
+      ],
+      "not_recommended_for": [
+        "production-asic-without-license-review"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/apb4-plic-controller",
+      "ip_repository": "https://github.com/openecos-projects/apb4-plic-controller",
+      "upstream_repository": "https://github.com/oscc-ip/plic",
+      "homepage": "https://github.com/oscc-ip/plic",
+      "documentation": "https://github.com/oscc-ip/plic/blob/main/doc/datasheet.md",
+      "upstream_owner": "oscc-ip",
+      "upstream_status": "active",
+      "current_ref": "source-snapshot-20250627",
+      "current_ref_type": "snapshot",
+      "languages": [
+        "SystemVerilog",
+        "C"
+      ],
+      "interfaces": [
+        "apb",
+        "interrupt"
+      ],
+      "bus_compatibility": [
+        "apb4"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "proven-through-20250627-project",
+      "maturity": "silicon-proven",
+      "documentation_quality": "basic",
+      "integration_difficulty": "medium",
+      "license": "MulanPSL-2.0 AND SHL-0.51",
+      "license_risk": "medium",
+      "commercial_use_allowed": "unknown",
+      "status": "candidate",
+      "next_action": "Attach tapeout validation evidence and run a reproducible simulation/lint baseline.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-10",
+      "path": "data/ip/peripheral/ip-000012.yaml"
+    },
+    {
+      "uid": "ip-000013",
+      "repo_name": "ip-000013",
+      "slug": "rcu-apb4",
+      "display_name": "APB4 Reset and Clock Unit",
+      "summary": "APB4-based reset and clock unit with multiple clock sources, programmable clock output, core clock division, and clock selection controls.",
+      "summary_zh": "基于 APB4 总线的复位与时钟控制单元，支持高速/低速/音频外部时钟源、可编程时钟输出、核心多路分频时钟生成以及时钟频率配置和核心选择控制；当前代码来自 20250627 流片工程快照。",
+      "category": "peripheral",
+      "subcategories": [
+        "rcu"
+      ],
+      "ip_family": "rcu",
+      "implementation_style": "standard-compatible",
+      "compatibility": [
+        "amba-apb"
+      ],
+      "features": [
+        "multi-clock-source",
+        "programmable-clock-output",
+        "core-clock-division",
+        "reset-clock-control"
+      ],
+      "integration_profile": [
+        "apb4-slave",
+        "memory-mapped-peripheral"
+      ],
+      "resource_profile": "small",
+      "performance_profile": "register-programmable",
+      "best_for": [
+        "small-mcu",
+        "fpga-demo",
+        "education"
+      ],
+      "not_recommended_for": [
+        "production-asic-without-license-review"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/apb4-reset-clock-unit",
+      "ip_repository": "https://github.com/openecos-projects/apb4-reset-clock-unit",
+      "upstream_repository": "https://github.com/oscc-ip/rcu",
+      "homepage": "https://github.com/oscc-ip/rcu",
+      "documentation": "https://github.com/oscc-ip/rcu/blob/main/doc/datasheet.md",
+      "upstream_owner": "oscc-ip",
+      "upstream_status": "active",
+      "current_ref": "source-snapshot-20250627",
+      "current_ref_type": "snapshot",
+      "languages": [
+        "SystemVerilog",
+        "C"
+      ],
+      "interfaces": [
+        "apb",
+        "interrupt"
+      ],
+      "bus_compatibility": [
+        "apb4"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "proven-through-20250627-project",
+      "maturity": "silicon-proven",
+      "documentation_quality": "basic",
+      "integration_difficulty": "medium",
+      "license": "MulanPSL-2.0 AND SHL-0.51",
+      "license_risk": "medium",
+      "commercial_use_allowed": "unknown",
+      "status": "candidate",
+      "next_action": "Attach tapeout validation evidence and run a reproducible simulation/lint baseline.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-10",
+      "path": "data/ip/peripheral/ip-000013.yaml"
+    },
+    {
+      "uid": "ip-000014",
+      "repo_name": "ip-000014",
+      "slug": "rtc-apb4",
+      "display_name": "APB4 RTC Controller",
+      "summary": "APB4-based real-time counter with programmable prescaler, 32-bit counter and alarm register, write protection, read resynchronization, and three interrupts.",
+      "summary_zh": "基于 APB4 总线的实时时钟控制器，支持可在线修改的预分频、32 位向上计数器与闹钟寄存器、写保护、读重同步，以及秒中断、溢出中断和闹钟中断；当前代码来自 20250627 流片工程快照。",
+      "category": "peripheral",
+      "subcategories": [
+        "rtc"
+      ],
+      "ip_family": "rtc",
+      "implementation_style": "standard-compatible",
+      "compatibility": [
+        "amba-apb"
+      ],
+      "features": [
+        "programmable-prescaler",
+        "32-bit-rtc-counter",
+        "alarm-register",
+        "write-protect",
+        "second-overflow-alarm-interrupts"
+      ],
+      "integration_profile": [
+        "apb4-slave",
+        "memory-mapped-peripheral"
+      ],
+      "resource_profile": "small",
+      "performance_profile": "register-programmable",
+      "best_for": [
+        "small-mcu",
+        "fpga-demo",
+        "education"
+      ],
+      "not_recommended_for": [
+        "production-asic-without-license-review"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/apb4-rtc-controller",
+      "ip_repository": "https://github.com/openecos-projects/apb4-rtc-controller",
+      "upstream_repository": "https://github.com/oscc-ip/rtc",
+      "homepage": "https://github.com/oscc-ip/rtc",
+      "documentation": "https://github.com/oscc-ip/rtc/blob/main/doc/datasheet.md",
+      "upstream_owner": "oscc-ip",
+      "upstream_status": "active",
+      "current_ref": "source-snapshot-20250627",
+      "current_ref_type": "snapshot",
+      "languages": [
+        "SystemVerilog",
+        "C"
+      ],
+      "interfaces": [
+        "apb",
+        "interrupt"
+      ],
+      "bus_compatibility": [
+        "apb4"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "proven-through-20250627-project",
+      "maturity": "silicon-proven",
+      "documentation_quality": "basic",
+      "integration_difficulty": "medium",
+      "license": "MulanPSL-2.0 AND SHL-0.51",
+      "license_risk": "medium",
+      "commercial_use_allowed": "unknown",
+      "status": "candidate",
+      "next_action": "Attach tapeout validation evidence and run a reproducible simulation/lint baseline.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-10",
+      "path": "data/ip/peripheral/ip-000014.yaml"
+    },
+    {
+      "uid": "ip-000015",
+      "repo_name": "ip-000015",
+      "slug": "clint-apb4",
+      "display_name": "APB4 CLINT Controller",
+      "summary": "APB4-based RISC-V CLINT-style local interrupt controller with 64-bit mtime/mtimecmp timer registers and software interrupt support.",
+      "summary_zh": "基于 APB4 总线的 RISC-V CLINT 风格本地中断控制器，支持 64 位 mtime/mtimecmp 定时器寄存器和软件中断，用于小型 SoC 的机器定时器与本地中断集成；当前代码来自 20250627 流片工程快照。",
+      "category": "peripheral",
+      "subcategories": [
+        "clint"
+      ],
+      "ip_family": "clint",
+      "implementation_style": "standard-compatible",
+      "compatibility": [
+        "amba-apb"
+      ],
+      "features": [
+        "riscv-clint-style",
+        "64-bit-mtime",
+        "64-bit-mtimecmp",
+        "software-interrupt"
+      ],
+      "integration_profile": [
+        "apb4-slave",
+        "memory-mapped-peripheral"
+      ],
+      "resource_profile": "small",
+      "performance_profile": "register-programmable",
+      "best_for": [
+        "small-mcu",
+        "fpga-demo",
+        "education"
+      ],
+      "not_recommended_for": [
+        "production-asic-without-license-review"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/apb4-clint-controller",
+      "ip_repository": "https://github.com/openecos-projects/apb4-clint-controller",
+      "upstream_repository": "https://github.com/oscc-ip/clint",
+      "homepage": "https://github.com/oscc-ip/clint",
+      "documentation": "https://github.com/oscc-ip/clint/blob/main/doc/datasheet.md",
+      "upstream_owner": "oscc-ip",
+      "upstream_status": "active",
+      "current_ref": "source-snapshot-20250627",
+      "current_ref_type": "snapshot",
+      "languages": [
+        "SystemVerilog",
+        "C"
+      ],
+      "interfaces": [
+        "apb",
+        "interrupt"
+      ],
+      "bus_compatibility": [
+        "apb4"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "proven-through-20250627-project",
+      "maturity": "silicon-proven",
+      "documentation_quality": "basic",
+      "integration_difficulty": "medium",
+      "license": "MulanPSL-2.0 AND SHL-0.51",
+      "license_risk": "medium",
+      "commercial_use_allowed": "unknown",
+      "status": "candidate",
+      "next_action": "Attach tapeout validation evidence and run a reproducible simulation/lint baseline.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-10",
+      "path": "data/ip/peripheral/ip-000015.yaml"
+    },
+    {
+      "uid": "ip-000016",
+      "repo_name": "ip-000016",
+      "slug": "pll-55nm",
+      "display_name": "55nm PLL IP",
+      "summary": "55nm process PLL IP targeting 500 MHz to 1200 MHz output with integer continuous division, 5 MHz to 40 MHz input, and period jitter below 30 ps.",
+      "summary_zh": "55nm 制程 PLL IP，面向 1.2V core 电压设计，支持 5MHz 到 40MHz 输入、500MHz 到 1200MHz 输出、连续整数分频，目标面积小于 200um x 200um，功耗小于 1.5mA，Period jitter 小于 30ps；Test Chip 完整电路与 GDS 文件以及行为模型源码待入库。",
+      "category": "clocking",
+      "subcategories": [
+        "pll",
+        "analog"
+      ],
+      "ip_family": "pll",
+      "implementation_style": "hard-macro",
+      "compatibility": [
+        "55nm-process"
+      ],
+      "features": [
+        "500mhz-to-1200mhz-output",
+        "5mhz-to-40mhz-input",
+        "integer-continuous-divider",
+        "period-jitter-lt-30ps",
+        "1p2v-core-voltage",
+        "behavior-model-planned"
+      ],
+      "integration_profile": [
+        "clock-generation",
+        "analog-hard-macro"
+      ],
+      "resource_profile": "small-hard-macro",
+      "performance_profile": "process-specific",
+      "best_for": [
+        "55nm-asic",
+        "soc-clock-generation"
+      ],
+      "not_recommended_for": [
+        "process-portable-rtl-only-design"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/55nm-pll-ip",
+      "ip_repository": "https://github.com/openecos-projects/55nm-pll-ip",
+      "upstream_repository": "https://github.com/openecos-projects/55nm-pll-ip",
+      "homepage": "https://github.com/openecos-projects/55nm-pll-ip",
+      "documentation": "https://github.com/openecos-projects/55nm-pll-ip/blob/main/docs/datasheet.md",
+      "upstream_owner": "openecos-projects",
+      "upstream_status": "in-development",
+      "current_ref": "planning-doc-20260615",
+      "current_ref_type": "planning-document",
+      "languages": [
+        "Verilog-A or behavioral model source planned"
+      ],
+      "interfaces": [
+        "clock",
+        "reset"
+      ],
+      "bus_compatibility": [],
+      "target_process": "55nm",
+      "fpga_support": "not-applicable",
+      "asic_support": "tapeout-pending-silicon-return",
+      "maturity": "tapeout-pending-return",
+      "documentation_quality": "planning-note",
+      "integration_difficulty": "high",
+      "license": "proprietary-or-undetermined",
+      "license_risk": "high",
+      "commercial_use_allowed": "unknown",
+      "status": "planned",
+      "next_action": "Add behavior model, Test Chip circuit/GDS provenance, process collateral constraints, and silicon characterization results after chip return.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-15",
+      "path": "data/ip/clocking/ip-000016.yaml"
+    },
+    {
+      "uid": "ip-000017",
+      "repo_name": "ip-000017",
+      "slug": "ddr3-ddr2-phy-55nm",
+      "display_name": "55nm DDR3/2 PHY IP",
+      "summary": "55nm DDR3/DDR2 PHY IP using a DFI interface between the DDR controller and DDR SDRAM devices, targeting DDR3-800 to DDR3-1600 and DDR2-667 to DDR2-1066 speed grades.",
+      "summary_zh": "55nm 制程 DDR3/2 PHY IP，通过 DFI 接口与 DDR 控制器交互，连接 DDR3 颗粒，支持 DDR3-800 到 DDR3-1600，并兼容 DDR2-667 到 DDR2-1066；当前状态为正在验证中。",
+      "category": "memory",
+      "subcategories": [
+        "ddr-phy",
+        "ddr3",
+        "ddr2"
+      ],
+      "ip_family": "ddr-phy",
+      "implementation_style": "hard-macro",
+      "compatibility": [
+        "dfi",
+        "ddr3",
+        "ddr2",
+        "55nm-process"
+      ],
+      "features": [
+        "dfi-interface",
+        "ddr3-800",
+        "ddr3-1066",
+        "ddr3-1333",
+        "ddr3-1600",
+        "ddr2-667",
+        "ddr2-800",
+        "ddr2-1066"
+      ],
+      "integration_profile": [
+        "dfi-phy",
+        "external-ddr-sdram"
+      ],
+      "resource_profile": "process-specific-hard-macro",
+      "performance_profile": "ddr3-1600-capable",
+      "best_for": [
+        "55nm-asic",
+        "ddr3-memory-subsystem"
+      ],
+      "not_recommended_for": [
+        "fpga-only-design"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/55nm-ddr3-ddr2-phy",
+      "ip_repository": "https://github.com/openecos-projects/55nm-ddr3-ddr2-phy",
+      "upstream_repository": "https://github.com/openecos-projects/55nm-ddr3-ddr2-phy",
+      "homepage": "https://github.com/openecos-projects/55nm-ddr3-ddr2-phy",
+      "documentation": "https://github.com/openecos-projects/55nm-ddr3-ddr2-phy/blob/main/docs/datasheet.md",
+      "upstream_owner": "openecos-projects",
+      "upstream_status": "in-verification",
+      "current_ref": "planning-doc-20260615",
+      "current_ref_type": "planning-document",
+      "languages": [
+        "SystemVerilog or mixed-signal model planned"
+      ],
+      "interfaces": [
+        "dfi",
+        "ddr"
+      ],
+      "bus_compatibility": [
+        "dfi"
+      ],
+      "target_process": "55nm",
+      "fpga_support": "not-applicable",
+      "asic_support": "in-verification",
+      "maturity": "in-verification",
+      "documentation_quality": "planning-note",
+      "integration_difficulty": "high",
+      "license": "proprietary-or-undetermined",
+      "license_risk": "high",
+      "commercial_use_allowed": "unknown",
+      "status": "planned",
+      "next_action": "Attach PHY deliverables, DFI timing documentation, supported SDRAM configuration matrix, and verification evidence.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-15",
+      "path": "data/ip/memory/ip-000017.yaml"
+    },
+    {
+      "uid": "ip-000018",
+      "repo_name": "ip-000018",
+      "slug": "ddr3-memory-controller",
+      "display_name": "DDR3 Memory Controller",
+      "summary": "DDR3 memory controller intended to connect to a DDR PHY through DFI and drive external DDR3 SDRAM devices as a complete memory subsystem.",
+      "summary_zh": "DDR3 内存控制器，通过 DFI 接口连接 DDR PHY，再由 PHY 连接 DDR3 颗粒；需要配合相应 PHY 才能完整工作，当前正在开发中。",
+      "category": "memory",
+      "subcategories": [
+        "ddr3",
+        "memory-controller"
+      ],
+      "ip_family": "ddr3-controller",
+      "implementation_style": "rtl",
+      "compatibility": [
+        "dfi",
+        "ddr3"
+      ],
+      "features": [
+        "dfi-interface",
+        "ddr3-sdram-control",
+        "phy-dependent-operation"
+      ],
+      "integration_profile": [
+        "memory-controller",
+        "dfi-controller-side"
+      ],
+      "resource_profile": "medium",
+      "performance_profile": "phy-dependent",
+      "best_for": [
+        "ddr3-memory-subsystem",
+        "asic-soc"
+      ],
+      "not_recommended_for": [
+        "standalone-use-without-ddr-phy"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/ddr3-memory-controller",
+      "ip_repository": "https://github.com/openecos-projects/ddr3-memory-controller",
+      "upstream_repository": "https://github.com/openecos-projects/ddr3-memory-controller",
+      "homepage": "https://github.com/openecos-projects/ddr3-memory-controller",
+      "documentation": "https://github.com/openecos-projects/ddr3-memory-controller/blob/main/docs/datasheet.md",
+      "upstream_owner": "openecos-projects",
+      "upstream_status": "in-development",
+      "current_ref": "planning-doc-20260615",
+      "current_ref_type": "planning-document",
+      "languages": [
+        "SystemVerilog planned"
+      ],
+      "interfaces": [
+        "dfi",
+        "ddr3"
+      ],
+      "bus_compatibility": [
+        "dfi"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "planned",
+      "maturity": "in-development",
+      "documentation_quality": "planning-note",
+      "integration_difficulty": "high",
+      "license": "proprietary-or-undetermined",
+      "license_risk": "high",
+      "commercial_use_allowed": "unknown",
+      "status": "planned",
+      "next_action": "Add controller RTL, register/configuration documentation, DFI timing assumptions, and verification plan.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-15",
+      "path": "data/ip/memory/ip-000018.yaml"
+    },
+    {
+      "uid": "ip-000019",
+      "repo_name": "ip-000019",
+      "slug": "soc-interconnect-bus",
+      "display_name": "Basic SoC Interconnect Bus",
+      "summary": "Basic SoC interconnect bus supporting 1 to 16 AXI masters, a single AHB master, up to 32 AXI slaves, up to 32 AHB slaves, and up to 31 external APB slaves through an AHB-to-APB bridge.",
+      "summary_zh": "基础互联总线，支持 1 到 16 个 AXI Master、单 AHB master、最多 32 个 AXI slaves、32 个 AHB slaves，并通过 AHB-to-APB bridge 支持最多 31 个外部 APB slaves；最大总线宽度 128bits，当前正在开发中。",
+      "category": "interconnect",
+      "subcategories": [
+        "axi",
+        "ahb",
+        "apb"
+      ],
+      "ip_family": "soc-interconnect",
+      "implementation_style": "rtl",
+      "compatibility": [
+        "amba-axi",
+        "amba-ahb",
+        "amba-apb"
+      ],
+      "features": [
+        "1-to-16-axi-masters",
+        "single-ahb-master",
+        "up-to-32-axi-slaves",
+        "up-to-32-ahb-slaves",
+        "up-to-31-apb-slaves-through-ahb-to-apb-bridge",
+        "up-to-128-bit-data-width",
+        "single-clock-axi-master-support"
+      ],
+      "integration_profile": [
+        "soc-interconnect",
+        "memory-mapped-bus-fabric"
+      ],
+      "resource_profile": "scalable",
+      "performance_profile": "configurable-width",
+      "best_for": [
+        "small-to-medium-soc",
+        "mixed-axi-ahb-apb-systems"
+      ],
+      "not_recommended_for": [
+        "multi-clock-axi-master-systems-without-extra-cdc-review"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/soc-interconnect-bus",
+      "ip_repository": "https://github.com/openecos-projects/soc-interconnect-bus",
+      "upstream_repository": "https://github.com/openecos-projects/soc-interconnect-bus",
+      "homepage": "https://github.com/openecos-projects/soc-interconnect-bus",
+      "documentation": "https://github.com/openecos-projects/soc-interconnect-bus/blob/main/docs/datasheet.md",
+      "upstream_owner": "openecos-projects",
+      "upstream_status": "in-development",
+      "current_ref": "planning-doc-20260615",
+      "current_ref_type": "planning-document",
+      "languages": [
+        "SystemVerilog planned"
+      ],
+      "interfaces": [
+        "axi",
+        "ahb",
+        "apb"
+      ],
+      "bus_compatibility": [
+        "axi",
+        "ahb",
+        "apb"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "planned",
+      "maturity": "in-development",
+      "documentation_quality": "planning-note",
+      "integration_difficulty": "high",
+      "license": "proprietary-or-undetermined",
+      "license_risk": "high",
+      "commercial_use_allowed": "unknown",
+      "status": "planned",
+      "next_action": "Add bus fabric RTL, configuration schema, arbitration/address mapping documentation, and protocol verification evidence.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-15",
+      "path": "data/ip/interconnect/ip-000019.yaml"
+    },
+    {
+      "uid": "ip-000020",
+      "repo_name": "ip-000020",
+      "slug": "riscv32imac-core",
+      "display_name": "RISCV32IMAC Processor Core",
+      "summary": "RISC-V RV32IMAC processor core with instruction and data caches, multi-stage pipeline, AXI memory interface, RISC-V Debug support, and CoreMark/MHz above 2.",
+      "summary_zh": "RISCV32IMAC 处理器，包含 ICache 和 DCache、多级流水线结构、AXI 总线访存接口、RISC-V Debug 调试支持，CoreMark/MHz 在 2 分以上；当前正在验证中，准备流片验证。",
+      "category": "processor",
+      "subcategories": [
+        "riscv",
+        "cpu-core"
+      ],
+      "ip_family": "riscv-core",
+      "implementation_style": "rtl",
+      "compatibility": [
+        "riscv-rv32imac",
+        "riscv-debug",
+        "amba-axi"
+      ],
+      "features": [
+        "rv32imac",
+        "icache",
+        "dcache",
+        "multi-stage-pipeline",
+        "axi-memory-interface",
+        "riscv-debug",
+        "coremark-per-mhz-gt-2"
+      ],
+      "integration_profile": [
+        "processor-core",
+        "axi-master"
+      ],
+      "resource_profile": "medium",
+      "performance_profile": "coremark-per-mhz-above-2",
+      "best_for": [
+        "riscv-soc",
+        "education",
+        "asic-validation"
+      ],
+      "not_recommended_for": [
+        "safety-certified-production-without-further-verification"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/riscv32imac-core",
+      "ip_repository": "https://github.com/openecos-projects/riscv32imac-core",
+      "upstream_repository": "https://github.com/openecos-projects/riscv32imac-core",
+      "homepage": "https://github.com/openecos-projects/riscv32imac-core",
+      "documentation": "https://github.com/openecos-projects/riscv32imac-core/blob/main/docs/datasheet.md",
+      "upstream_owner": "openecos-projects",
+      "upstream_status": "in-verification",
+      "current_ref": "planning-doc-20260615",
+      "current_ref_type": "planning-document",
+      "languages": [
+        "SystemVerilog planned"
+      ],
+      "interfaces": [
+        "axi",
+        "riscv-debug",
+        "interrupt"
+      ],
+      "bus_compatibility": [
+        "axi"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "pre-tapeout-verification",
+      "maturity": "in-verification",
+      "documentation_quality": "planning-note",
+      "integration_difficulty": "high",
+      "license": "proprietary-or-undetermined",
+      "license_risk": "high",
+      "commercial_use_allowed": "unknown",
+      "status": "planned",
+      "next_action": "Add CPU RTL, ISA compliance results, CoreMark logs, debug validation, cache behavior documentation, and tapeout verification evidence.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-06-15",
+      "path": "data/ip/processor/ip-000020.yaml"
     }
   ]
 }
