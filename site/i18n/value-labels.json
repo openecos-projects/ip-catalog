@@ -1,59 +1,107 @@
 {
   "zh": {
     "category": {
-      "peripheral": "外设",
-      "processor": "处理器",
-      "accelerator": "加速器",
+      "clocking": "时钟",
       "interconnect": "互连",
       "memory": "存储",
-      "security": "安全",
-      "dsp": "数字信号处理",
-      "video": "视频/图像",
-      "debug-test": "调试/测试",
-      "soc-platform": "SoC 平台",
-      "eda-support": "EDA 辅助"
+      "peripheral": "外设",
+      "processor": "处理器"
     },
     "ip_family": {
-      "uart": "UART",
-      "spi": "SPI",
-      "i2c": "I2C",
+      "archinfo": "架构信息",
+      "clint": "CLINT",
+      "crc": "CRC",
+      "ddr3-controller": "DDR3 控制器",
+      "ddr-phy": "DDR PHY",
       "gpio": "GPIO",
+      "i2c": "I2C",
+      "plic": "PLIC",
+      "pll": "PLL",
+      "ps2": "PS/2",
+      "psram": "PSRAM",
+      "pwm": "PWM",
+      "rcu": "复位控制",
+      "riscv-core": "RISC-V 处理器核",
+      "rng": "随机数发生器",
+      "rtc": "实时时钟",
+      "soc-interconnect": "SoC 互连",
+      "spi": "SPI",
       "timer": "定时器",
-      "dma": "DMA",
-      "risc-v-core": "RISC-V 处理器核",
-      "interrupt-controller": "中断控制器",
-      "axi-interconnect": "AXI 互连",
-      "apb-bridge": "APB 桥",
-      "sram-controller": "SRAM 控制器",
-      "cache": "缓存",
-      "aes": "AES",
-      "sha": "SHA",
-      "jtag": "JTAG",
-      "debug-module": "调试模块"
+      "uart": "UART"
+    },
+    "interfaces": {
+      "ahb": "AHB",
+      "apb": "APB",
+      "APB-style": "类 APB",
+      "axi": "AXI",
+      "clock": "时钟",
+      "ddr": "DDR",
+      "ddr3": "DDR3",
+      "dfi": "DFI",
+      "gpio": "GPIO",
+      "i2c": "I2C",
+      "interrupt": "中断",
+      "qspi": "QSPI",
+      "reset": "复位",
+      "riscv-debug": "RISC-V 调试",
+      "spi": "SPI",
+      "uart": "UART"
+    },
+    "maturity": {
+      "candidate": "候选",
+      "in-development": "开发中",
+      "in-verification": "验证中",
+      "silicon-proven": "已流片验证",
+      "tapeout-pending-return": "已流片待回片"
+    },
+    "license_risk": {
+      "high": "高风险",
+      "low": "低风险",
+      "medium": "中等风险"
+    },
+    "integration_difficulty": {
+      "high": "高",
+      "low": "低",
+      "medium": "中"
+    },
+    "data_quality": {
+      "partial": "部分完整",
+      "reviewed": "已复核"
+    },
+    "fpga_support": {
+      "likely": "可能支持",
+      "not-applicable": "不适用",
+      "unknown": "未知"
+    },
+    "asic_support": {
+      "in-verification": "验证中",
+      "planned": "计划中",
+      "pre-tapeout-verification": "流片前验证",
+      "proven-through-20250627-project": "已由 2025-06-27 项目验证",
+      "tapeout-pending-silicon-return": "已流片待回片",
+      "unknown": "未知"
+    },
+    "current_ref_type": {
+      "planning-document": "规划文档",
+      "project-source-drop": "项目源码快照",
+      "snapshot": "快照",
+      "source-snapshot": "源码快照"
+    },
+    "commercial_use_allowed": {
+      "unknown": "未知"
     },
     "status": {
       "candidate": "候选",
-      "evaluating": "评估中",
-      "approved": "已批准",
-      "used": "已使用",
-      "rejected": "已拒绝",
-      "needs-review": "需复核",
-      "deprecated": "已废弃"
+      "planned": "计划中"
     },
-    "maturity": {
-      "experimental": "实验性",
-      "usable": "可用",
-      "production": "生产候选",
-      "silicon-proven": "已流片验证"
+    "documentation_quality": {
+      "basic": "基础",
+      "planning-note": "规划说明"
     },
-    "interfaces": {
-      "UART": "UART",
-      "APB-style": "类APB",
-      "APB": "APB",
-      "AXI4": "AXI4",
-      "AXI4-Lite": "AXI4-Lite",
-      "Wishbone": "Wishbone",
-      "TileLink": "TileLink"
+    "implementation_style": {
+      "hard-macro": "硬宏",
+      "rtl": "RTL",
+      "standard-compatible": "标准兼容"
     }
   },
   "en": {}
