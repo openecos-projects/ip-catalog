@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const DATA_URL = "../generated/index.json";
+  const DATA_URL = "generated/index.json";
   const VALUE_LABELS_URL = "i18n/value-labels.json";
 
   const copy = {
