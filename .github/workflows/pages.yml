@@ -41,6 +41,10 @@ jobs:
           mkdir -p _site/generated
           mkdir -p _site/i18n
           cp site/index.html _site/index.html
+          cp site/styles.css _site/styles.css
+          cp site/catalog.css _site/catalog.css
+          cp site/overlays.css _site/overlays.css
+          cp site/app.js _site/app.js
           cp site/i18n/value-labels.json _site/i18n/value-labels.json
           cp generated/index.json _site/generated/index.json
           cp generated/index.md _site/generated/index.md
