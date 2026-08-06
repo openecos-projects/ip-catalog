@@ -146,6 +146,16 @@ This repository is managed as a child repository of `ip-catalog`.
 
 `ip.yaml` 是子仓库内部的最小元数据，不替代 `ip-catalog` 中的完整记录。
 
+涉及总线接口、总线连接依赖或总线能力提供时，必须遵守
+[ip.yaml 总线依赖与能力提供规则](ip-yaml-bus-dependency-standard.md)，并将信息分为：
+
+- `bus_interfaces`：IP 自身暴露的总线端口。
+- `prerequisite_dependencies`：IP 集成时必须满足的总线连接能力。
+- `provided_capabilities`：IP 可向其他实例或系统提供的总线能力。
+
+禁止使用同一个字段同时表达端口、依赖和能力，也禁止在库级 `ip.yaml` 中绑定具体
+SoC 工程的实例、网络或连接路径。
+
 示例：
 
 ```yaml

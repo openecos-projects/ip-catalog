@@ -1,0 +1,114 @@
+uid: ip-000022
+repo_name: ip-000022
+slug: axi4-to-apb4-bridge
+display_name: AXI4 to APB4 Bridge
+summary: Parameterized AXI4 subordinate to APB4 manager bridge with burst serialization, wait-state handling, byte strobes, and error propagation.
+summary_zh: 参数化 AXI4 从接口到 APB4 主接口桥，将 AXI burst 逐拍转换为 APB 访问，并支持等待状态、字节写选通和错误响应传播。
+category: interconnect
+subcategories:
+  - bus-bridge
+  - axi
+  - apb
+ip_family: bus-bridge
+implementation_style: standard-compatible
+compatibility:
+  - amba-axi4
+  - amba-apb4
+features:
+  - fixed-incr-wrap-bursts
+  - apb-wait-states
+  - byte-strobes
+  - error-propagation
+  - parameterized-widths
+integration_profile:
+  - axi4-subordinate
+  - apb4-manager
+best_for:
+  - soc-control-plane
+  - low-bandwidth-peripherals
+  - fpga-prototyping
+not_recommended_for:
+  - high-throughput-multi-outstanding-traffic
+  - clock-domain-crossing
+
+catalog:
+  repository: git@github.com:openecos-projects/ip-catalog.git
+  path: data/ip/interconnect/ip-000022.yaml
+
+links:
+  catalog_repository: https://github.com/openecos-projects/axi4-to-apb4-bridge
+  repository: https://github.com/openecos-projects/axi4-to-apb4-bridge
+  homepage: https://github.com/openecos-projects/axi4-to-apb4-bridge
+  documentation: docs/integration.md
+
+upstream:
+  owner: null
+  repository: null
+  author: null
+  contributors: []
+  status: local-origin
+  default_branch: main
+  ref: main
+  ref_type: branch
+  commit: null
+  sync_policy: none
+
+tracking:
+  current_ref: main
+  current_ref_type: branch
+  baseline_ref: local-verilator-baseline
+  baseline_reviewed_at: 2026-08-06
+  update_policy: manual
+  provenance:
+    source_project: axi2apb
+    source_snapshot: local-development
+    silicon_validated: false
+
+technical:
+  languages:
+    - SystemVerilog
+  interfaces:
+    - axi4
+    - apb4
+  bus_compatibility:
+    - axi4
+    - apb4
+  dependencies: []
+  prerequisite_dependencies: []
+  top_modules:
+    - axi4_to_apb4
+  target_process: generic
+  fpga_support: expected
+  asic_support: expected
+
+legal:
+  license: unknown
+  license_file_present: false
+  license_risk: high
+  commercial_use_allowed: unknown
+  notes:
+    - A project license must be selected and reviewed before catalog approval.
+
+quality:
+  maturity: prototype
+  verification: simulation
+  documentation_quality: basic
+  integration_difficulty: low
+  notes:
+    - Verilator self-checking simulation passes 171 checks.
+    - No formal, synthesis, timing, coverage, or silicon report is recorded.
+
+internal:
+  status: candidate
+  next_action: Select a license, complete independent RTL review, then submit the catalog record.
+  source_mirror: true
+  mirror_policy: source-mirror
+  silicon_proven: false
+  source_project: axi2apb
+
+metadata:
+  first_seen_at: 2026-08-06
+  last_reviewed_at: 2026-08-06
+  data_quality: partial
+  maintainers:
+    - openecos-projects
