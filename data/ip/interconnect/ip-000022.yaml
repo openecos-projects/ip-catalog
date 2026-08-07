@@ -1,3 +1,7 @@
+schema_version: 1
+id: ip.axi4_to_apb4_bridge
+name: axi4_to_apb4_bridge
+version: 1.0.0
 uid: ip-000022
 repo_name: ip-000022
 slug: axi4-to-apb4-bridge
@@ -11,18 +15,12 @@ subcategories:
   - apb
 ip_family: bus-bridge
 implementation_style: standard-compatible
-compatibility:
-  - amba-axi4
-  - amba-apb4
 features:
   - fixed-incr-wrap-bursts
   - apb-wait-states
   - byte-strobes
   - error-propagation
   - parameterized-widths
-integration_profile:
-  - axi4-subordinate
-  - apb4-manager
 best_for:
   - soc-control-plane
   - low-bandwidth-peripherals
@@ -30,17 +28,64 @@ best_for:
 not_recommended_for:
   - high-throughput-multi-outstanding-traffic
   - clock-domain-crossing
-
+bus_interfaces:
+  - id: s_axi
+    name: upstream
+    kind: memory_mapped
+    protocol: AXI
+    protocol_version: '4'
+    profile: full
+    role: target
+    address_width: 32
+    data_width: 32
+    required: true
+    description: Upstream AXI4 Full interface; widths describe the default parameter configuration.
+  - id: m_apb
+    name: downstream
+    kind: memory_mapped
+    protocol: APB
+    protocol_version: '4'
+    role: initiator
+    address_width: 32
+    data_width: 32
+    required: true
+    description: Downstream APB4 interface; widths describe the default parameter configuration.
+prerequisite_dependencies:
+  - id: upstream_axi_access
+    type: bus_connectivity
+    interface_ref: s_axi
+    required: true
+    requirement:
+      capability: addressable_bus_access
+      protocol: AXI
+      protocol_version: '4'
+      profile: full
+      connection_modes:
+        - native
+        - bridge
+      reachable_from:
+        - any_initiator
+    description: The AXI4 target must be reachable from a compatible transaction initiator.
+provided_capabilities:
+  - id: downstream_apb_access
+    type: bus_connectivity
+    interface_ref: m_apb
+    capability:
+      name: addressable_bus_access
+      protocol: APB
+      protocol_version: '4'
+      connection_mode: bridge
+      reachable_from:
+        - upstream_initiator
+    description: Provides APB4 access when the required upstream AXI4 path is satisfied.
 catalog:
   repository: git@github.com:openecos-projects/ip-catalog.git
   path: data/ip/interconnect/ip-000022.yaml
-
 links:
   catalog_repository: https://github.com/openecos-projects/axi4-to-apb4-bridge
   repository: https://github.com/openecos-projects/axi4-to-apb4-bridge
   homepage: https://github.com/openecos-projects/axi4-to-apb4-bridge
   documentation: docs/integration.md
-
 upstream:
   owner: null
   repository: null
@@ -52,7 +97,6 @@ upstream:
   ref_type: branch
   commit: null
   sync_policy: none
-
 tracking:
   current_ref: main
   current_ref_type: branch
@@ -63,24 +107,15 @@ tracking:
     source_project: axi2apb
     source_snapshot: local-development
     silicon_validated: false
-
 technical:
   languages:
     - SystemVerilog
-  interfaces:
-    - axi4
-    - apb4
-  bus_compatibility:
-    - axi4
-    - apb4
   dependencies: []
-  prerequisite_dependencies: []
   top_modules:
     - axi4_to_apb4
   target_process: generic
   fpga_support: expected
   asic_support: expected
-
 legal:
   license: unknown
   license_file_present: false
@@ -88,7 +123,6 @@ legal:
   commercial_use_allowed: unknown
   notes:
     - A project license must be selected and reviewed before catalog approval.
-
 quality:
   maturity: prototype
   verification: simulation
@@ -97,7 +131,6 @@ quality:
   notes:
     - Verilator self-checking simulation passes 171 checks.
     - No formal, synthesis, timing, coverage, or silicon report is recorded.
-
 internal:
   status: candidate
   next_action: Select a license, complete independent RTL review, then submit the catalog record.
@@ -105,7 +138,6 @@ internal:
   mirror_policy: source-mirror
   silicon_proven: false
   source_project: axi2apb
-
 metadata:
   first_seen_at: 2026-08-06
   last_reviewed_at: 2026-08-06

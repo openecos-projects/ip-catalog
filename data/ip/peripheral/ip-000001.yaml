@@ -68,6 +68,11 @@ technical:
     - apb4
   dependencies:
     - local common RTL modules under rtl/
+  prerequisite_dependencies:
+    - type: bus-infrastructure
+      capability: APB4
+      required: true
+      description: Requires a native APB4 fabric or a compatible bus-to-APB4 bridge to access the control and data registers.
   top_modules:
     - apb4_uart
   target_process: generic
