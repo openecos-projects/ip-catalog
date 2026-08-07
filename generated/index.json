@@ -1,6 +1,6 @@
 {
   "generated_from": "data/ip/**/*.yaml",
-  "total": 23,
+  "total": 24,
   "records": [
     {
       "uid": "ip-000000",
@@ -1677,6 +1677,86 @@
       "data_quality": "partial",
       "last_reviewed_at": "2026-08-06",
       "path": "data/ip/interconnect/ip-000022.yaml"
+    },
+    {
+      "uid": "ip-000023",
+      "repo_name": "npc-rv32e-core",
+      "slug": "npc-rv32e-core",
+      "display_name": "NPC RV32E Processor Core",
+      "summary": "Fixed-configuration 32-bit RISC-V processor RTL with a staged integer pipeline, small instruction cache, machine-mode CSR subset, internal timer, and 32-bit AXI-like master interface.",
+      "summary_zh": "固定配置的 32 位 RISC-V 处理器 RTL，包含多级整数流水线、小型指令缓存、机器模式 CSR 子集、片内计时器和 32 位 AXI 类主接口。",
+      "category": "processor",
+      "subcategories": [
+        "risc-v-core",
+        "cpu-core"
+      ],
+      "ip_family": "risc-v-core",
+      "implementation_style": "platform-integrated",
+      "compatibility": [
+        "riscv-rv32e-subset",
+        "riscv-machine-mode-subset",
+        "amba-axi4-subset"
+      ],
+      "features": [
+        "32-bit-datapath",
+        "16-register-integer-file",
+        "staged-pipeline",
+        "instruction-cache",
+        "forwarding-and-hazard-control",
+        "machine-mode-csr-subset",
+        "internal-mtime-counter",
+        "axi-memory-interface"
+      ],
+      "integration_profile": [
+        "processor-core",
+        "axi-master",
+        "single-clock-domain"
+      ],
+      "resource_profile": "unknown",
+      "performance_profile": "unknown",
+      "best_for": [
+        "education",
+        "research",
+        "riscv-soc-evaluation"
+      ],
+      "not_recommended_for": [
+        "linux-capable-soc",
+        "safety-certified-production",
+        "production-use-without-isa-compliance-testing"
+      ],
+      "catalog_repository": "https://github.com/openecos-projects/npc-rv32e-core",
+      "ip_repository": "https://github.com/openecos-projects/npc-rv32e-core",
+      "upstream_repository": "https://github.com/openecos-projects/npc-rv32e-core",
+      "homepage": "https://github.com/openecos-projects/npc-rv32e-core",
+      "documentation": "https://github.com/openecos-projects/npc-rv32e-core/blob/main/docs/integration.md",
+      "upstream_owner": "",
+      "upstream_status": "local-origin",
+      "current_ref": "initial-import-20260808",
+      "current_ref_type": "source-snapshot",
+      "languages": [
+        "SystemVerilog"
+      ],
+      "interfaces": [
+        "axi4-subset-master",
+        "interrupt-input-unimplemented"
+      ],
+      "bus_compatibility": [
+        "axi4-subset"
+      ],
+      "target_process": "generic",
+      "fpga_support": "unknown",
+      "asic_support": "unknown",
+      "maturity": "experimental",
+      "documentation_quality": "basic",
+      "integration_difficulty": "high",
+      "license": "unknown",
+      "license_risk": "high",
+      "commercial_use_allowed": "unknown",
+      "status": "candidate",
+      "next_action": "Confirm source provenance, copyright owner, and open-source license; then add ISA compliance and integration evidence.",
+      "data_quality": "partial",
+      "last_reviewed_at": "2026-08-08",
+      "path": "data/ip/processor/ip-000023.yaml"
     }
   ]
 }

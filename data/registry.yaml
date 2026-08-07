@@ -91,3 +91,7 @@ children:
   repository: https://github.com/openecos-projects/axi4-to-apb4-bridge
   branch: main
   metadata_path: ip.yaml
+- uid: ip-000023
+  repository: https://github.com/openecos-projects/npc-rv32e-core
+  branch: main
+  metadata_path: ip.yaml

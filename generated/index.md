@@ -1,6 +1,6 @@
 # IP Catalog Index
 
-Total IP records: 23
+Total IP records: 24
 
 | UID | Name | Family | Category | Status | License | Maturity | Source |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -27,6 +27,7 @@ Total IP records: 23
 | [ip-000020](../data/ip/processor/ip-000020.yaml) | RISCV32IMAC Processor Core | riscv-core | processor | planned | proprietary-or-undetermined | in-verification | openecos-projects |
 | [ip-000021](../data/ip/peripheral/ip-000021.yaml) | APB Quad SPI Master Controller | spi | peripheral | candidate | SHL-0.51 | candidate | openecos-projects |
 | [ip-000022](../data/ip/interconnect/ip-000022.yaml) | AXI4 to APB4 Bridge | bus-bridge | interconnect | candidate | unknown | prototype |  |
+| [ip-000023](../data/ip/processor/ip-000023.yaml) | NPC RV32E Processor Core | risc-v-core | processor | candidate | unknown | experimental |  |
 
 ## Notes
 

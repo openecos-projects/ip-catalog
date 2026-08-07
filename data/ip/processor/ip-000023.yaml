@@ -1,0 +1,206 @@
+schema_version: 1
+id: ip.npc_rv32e_core
+name: npc_rv32e_core
+version: 0.1.0
+uid: ip-000023
+repo_name: npc-rv32e-core
+slug: npc-rv32e-core
+display_name: NPC RV32E Processor Core
+summary: Fixed-configuration 32-bit RISC-V processor RTL with a staged integer pipeline, small instruction cache, machine-mode CSR subset, internal timer, and 32-bit AXI-like master interface.
+summary_zh: 固定配置的 32 位 RISC-V 处理器 RTL，包含多级整数流水线、小型指令缓存、机器模式 CSR 子集、片内计时器和 32 位 AXI 类主接口。
+category: processor
+subcategories:
+  - risc-v-core
+  - cpu-core
+ip_family: risc-v-core
+implementation_style: platform-integrated
+compatibility:
+  - riscv-rv32e-subset
+  - riscv-machine-mode-subset
+  - amba-axi4-subset
+features:
+  - 32-bit-datapath
+  - 16-register-integer-file
+  - staged-pipeline
+  - instruction-cache
+  - forwarding-and-hazard-control
+  - machine-mode-csr-subset
+  - internal-mtime-counter
+  - axi-memory-interface
+integration_profile:
+  - processor-core
+  - axi-master
+  - single-clock-domain
+resource_profile: unknown
+performance_profile: unknown
+best_for:
+  - education
+  - research
+  - riscv-soc-evaluation
+not_recommended_for:
+  - linux-capable-soc
+  - safety-certified-production
+  - production-use-without-isa-compliance-testing
+bus_interfaces:
+  - id: m_axi
+    name: memory
+    kind: memory_mapped
+    protocol: AXI
+    protocol_version: '4'
+    profile: full
+    role: initiator
+    address_width: 32
+    data_width: 32
+    required: true
+    description: Instruction and data memory interface using an implementation-specific AXI4 subset; instruction fills use four-beat reads and data accesses are single-beat.
+prerequisite_dependencies:
+  - id: memory_transaction_target
+    type: bus_connectivity
+    interface_ref: m_axi
+    required: true
+    requirement:
+      capability: transaction_target
+      protocol: AXI
+      protocol_version: '4'
+      profile: full
+      connection_modes:
+        - native
+        - bridge
+    description: The processor requires a compatible AXI4 memory target for instruction fetches and data accesses.
+provided_capabilities:
+  - id: processor_transaction_source
+    type: bus_connectivity
+    interface_ref: m_axi
+    capability:
+      name: transaction_source
+      protocol: AXI
+      protocol_version: '4'
+      profile: full
+      connection_mode: native
+    description: The processor can initiate instruction and data memory transactions.
+catalog:
+  repository: git@github.com:openecos-projects/ip-catalog.git
+  path: data/ip/processor/ip-000023.yaml
+links:
+  catalog_repository: https://github.com/openecos-projects/npc-rv32e-core
+  repository: https://github.com/openecos-projects/npc-rv32e-core
+  homepage: https://github.com/openecos-projects/npc-rv32e-core
+  documentation: https://github.com/openecos-projects/npc-rv32e-core/blob/main/docs/integration.md
+upstream:
+  owner: null
+  repository: null
+  author: null
+  contributors: []
+  status: local-origin
+  default_branch: main
+  ref: initial-import-20260808
+  ref_type: source-snapshot
+  commit: null
+  sync_policy: none
+tracking:
+  current_ref: initial-import-20260808
+  current_ref_type: source-snapshot
+  baseline_ref: sha256:d029f6e826dc49bc0ccebba2df3abedc3bb8a61707f67e44934bc5aa6618e4fd
+  baseline_reviewed_at: 2026-08-08
+  update_policy: manual
+  provenance:
+    source_project: local RTL submission
+    source_file: NPC-bstage.sv
+    source_snapshot: 2026-08-08 local import
+    generated_by: CIRCT firtool 1.66.0 from Chisel sources
+    silicon_validated: unknown
+    status_note: Provenance and ownership must be confirmed before catalog submission.
+versions:
+  - version: 0.1.0
+    ref: initial-import-20260808
+    ref_type: source-snapshot
+    commit: null
+    date: 2026-08-08
+    status: candidate
+    verification_summary: Verilator elaboration and lint completed; no testbench or ISA compliance evidence is included.
+    change_summary: Initial catalog-ready repository organization of the supplied generated RTL.
+    risk_notes:
+      - Source provenance, copyright ownership, and license are not established.
+      - ISA compatibility is inferred from RTL and has not been compliance-tested.
+technical:
+  languages:
+    - SystemVerilog
+  source_languages:
+    - Chisel
+  interfaces:
+    - axi4-subset-master
+    - interrupt-input-unimplemented
+  bus_compatibility:
+    - axi4-subset
+  dependencies: []
+  top_modules:
+    - NPC
+  auxiliary_modules:
+    - IFU
+    - IDU
+    - EXU
+    - LSU
+    - WBU
+    - Cache
+    - AXI4CrossbarNto1
+    - AXI4Crossbar1toN
+    - AXI4CLINT
+  clock_domains: one functional clock domain
+  reset_scheme: active-high reset; mixed asynchronous and synchronous use in generated RTL
+  reset_vector: 805306368
+  parameterizable: false
+  target_process: generic
+  fpga_support: unknown
+  asic_support: unknown
+  toolchains:
+    - CIRCT firtool 1.66.0 (generation provenance)
+    - Verilator 5.050 (lint only)
+  deliverables:
+    rtl: present
+    testbench: intentionally-omitted
+    formal: absent
+    docs: basic
+    constraints: absent
+legal:
+  license: unknown
+  license_file_present: false
+  license_risk: high
+  patent_grant: unknown
+  commercial_use_allowed: unknown
+  notes:
+    - No license notice, copyright statement, or upstream repository was supplied with the RTL.
+    - Do not treat catalog candidacy as permission to use or redistribute the RTL.
+quality:
+  maturity: experimental
+  verification: lint-only
+  documentation_quality: basic
+  integration_difficulty: high
+  silicon_proven: unknown
+  fpga_proven: unknown
+  ci: absent
+  known_issues:
+    - The external interrupt input is unused by the generated implementation.
+    - The AXI slave interface is tied off and is not functional.
+    - The generated Top shell ties off the master interface; integrate module NPC instead.
+    - Verilator reports mixed synchronous/asynchronous reset usage and unused interface signals.
+    - ISA compatibility and CSR behavior have not been checked with a RISC-V compliance suite.
+internal:
+  status: candidate
+  next_action: Confirm source provenance, copyright owner, and open-source license; then add ISA compliance and integration evidence.
+  source_mirror: true
+  mirror_policy: source-mirror
+  silicon_proven: unknown
+  source_project: local RTL submission
+  review_notes: reports/lint-summary.md
+  integration_notes:
+    - Treat all architecture labels as RTL-derived until verified against the original design specification.
+    - Use NPC rather than the generated Top wrapper for SoC integration.
+  used_versions: []
+  used_in_projects: []
+  rejection_reason: null
+metadata:
+  first_seen_at: 2026-08-08
+  last_reviewed_at: 2026-08-08
+  data_quality: partial
+  maintainers:
+    - XHTimmo
